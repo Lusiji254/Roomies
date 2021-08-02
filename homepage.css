@@ -1,0 +1,103 @@
+h1{
+
+    text-align: center;
+color: black;
+}
+body {
+    background-color: white;
+    background-size: cover;
+    color:rgb(0, 0, 0);
+    }
+   h3{
+    text-align: center;
+   }
+   #mainNav {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgb(255, 255, 255) ;
+      }
+      p{
+          color: black;
+          font-size: 22px;
+      }
+    .search{
+        top: 100px;
+        position: absolute;
+        width: 280px;
+        transition: 3s;
+        }
+ .form-box{
+            width: 380px;
+            height: 400px;
+            position: relative;
+            margin: 2% auto;
+            background:rgb(255, 255, 255) ;
+            padding: 10px;
+            overflow: hidden;
+            left: 30%;
+            top: -60px;
+            }
+.form-control{
+ width: 100%;
+ padding: 10px 0;
+  margin: 5px 0;
+ border-left: 0;
+border-right: 0;
+border-bottom: 1px solid #999;
+ outline: none;
+ background: transparent;
+                
+                    }
+button{
+    width: max-content;
+}
+.hero{
+
+
+    justify-content: center;
+    align-items: center;
+    background: #333;
+    margin-bottom: 2px;
+    padding:  270px 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 50vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    background: url("Images/2shareroom.jpg") no-repeat center center;
+      background-size: cover;
+      padding-top: 15rem;
+      padding-bottom: 15rem;
+    
+    }
+    .sp-head {
+        background: #f5f6f8;
+        clear: both;
+        display: block;
+        overflow: hidden;
+        margin: 0 0 60px 0;
+        padding: 60px 0 35px 0;
+        width: 100%;
+        text-align: center;
+        }
+        .sp-head .sp-head__content {
+            clear: both;
+            display: block;
+            overflow: hidden;
+            text-align: center;
+            padding: 0 10%;
+            width: 100%;
+            }
+            .sp-head h1 {
+            color: #233a77;
+            text-transform: uppercase;
+            font-size: 30px;
+            }
+           
+      
+              footer.footer {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+              }
+              
+              
