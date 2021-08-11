@@ -1,3 +1,7 @@
+<?php include('config.php')?>
+
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -75,71 +79,59 @@
         
           </div>
           </section>
-    <div class="container-fluid p-0">
 
-        <div class="row no-gutters">
-            <div class="col-lg-4 p-4 order-lg-2 my-auto text-center">
-                <img src="Images/singleroom.jpg" alt="" width="370" height="250" style="margin-top:-10%;" align="center">
-                <br/>
-                <br/>
-                <h3 class="display-5 mb-0" style="text-align:center"> Single Room </h3>
-                <br/>
-                <p class="lead mb-0" style="text-align:center">A single room is a room intended for one person to stay in.
-                Therefore it has one bed and occupies only one person.</p>
-                <div class="myButton">
-                    <br/>
-                    
+
+
+<!-- HOSTEL DISPLAY DATA TRIAL -->
+<div class="container py-5">
+    <div class="row mt-4">
+        <?php  
+       
+        $query="SELECT * FROM hostels";
+        $query_run=mysqli_query($conn, $query);
+        $check_hostels =mysqli_num_rows($query_run) > 0;
+            if($check_hostels){
+                while($row = mysqli_fetch_array($query_run))
+                {
+
+        ?>
+        <div class="col-md-4 mt-3">
+            <div class="card">
+            <img src="uploads/<?php echo $row['pictures'];?>" width="260px" height="200px" alt="Hostel images">
+                <div class="card-body">
+                    <h4 style="text-align:center;"class="card-title">Hostel Name: <?php echo $row['hostel_name'];?></h4>
+                    <p style="font-size:18px;"class="card-text"> Contact: <?php echo $row['hostel_owner'];?><br><?php echo $row['tel_number'];?></p>
+                    <p style="font-size:18px;" class="card-text">Hostel Type: <?php echo $row['gender'];?>  </p>
+                    <p style="font-size:18px;"class="card-text">Room types available: <?php echo $row['room_types'];?></p>
+                    <p style="font-size:18px;"class="card-text">Amenities: <?php echo $row['amenities'];?></p>
+
+                </div>
                 </div>
             </div>
-            <div class="col-lg-4 p-4 order-lg-2 my-auto text-center">
-                <img src="Images/image.jpeg" alt="" width="370" height="250" align="center">
-                <br/>
-                <br/>
-                <h3 class="display-5 mb-0" style="text-align:center"> Double Room </h3>
-                <br/>
-                <p class="lead mb-0" style="text-align:center">A double room is a room intended for two people. 
-                    A double room has double beds or a double decor. Some hostels refer to it as a twin room. </p>
-                <div class="myButton">
-                    <br/>
-                    
-                </div>
-            </div>
-            <div class="col-lg-4 p-4 order-lg-2 my-auto text-center">
-                <img src="Images/4Share.jpg" alt="" width="370" height="250" align="center">
-                <br/>
-                <br/>
-                <h3 class="display-5 mb-0" style="text-align:center"> Quadruple Room </h3>
-                <br/>
-                <p class="lead mb-0" style="text-align:center">A quadruple room is a room that occupies four people.
-                It is a four beddedroom which may have two double beds or four single beds.</p>
-                <div class="myButton">
-                    <br/>
-                   
-                </div>
-            </div>
-        </div>
+    <?php
+
+                                  
+                }
+ 
+            }else{
+                echo"No Hostels Found";
+            }
+        ?>
+
 
         
-</section>
-<div class="table-responsive">
-    <table class="table align-middle">
-      <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Hostel Name</th>
-            <th scope="col">Location</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Room Types</th>
-            <th scope="col">Telephone Number</th>
-            <th scope="col">Amenities</th>
-            <th scope="col">Pictuers</th>
-        </tr>
-      </thead>
-      <tbody>
+
         
-      </tbody>
-    </table>
-  </div>
+ 
+    </div>
+
+
+</div>
+
+
+
+
+    
   <section class="sp-head">
     <div class="container">
       <article class="sp-head__content">
@@ -155,6 +147,5 @@
     <p class="text-muted small mb-4 mb-lg-0">&copy; Roomies 2021. All Rights Reserved.</p>
  
 </footer>
-
 </body>
 </html>
