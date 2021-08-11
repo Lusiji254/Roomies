@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="Registration.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="Registration.css">  
-
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
   <body>
       <h1>ROOMIES</h1>
@@ -25,51 +26,84 @@
     </div>
     
 
-<form id="login" class="inputLogin" action="homepage.html" method="POST">
-  
-  <label for="floatingInput">Email</label>
-  <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+<form id="login" class="inputLogin" action="login.php" method="POST">
+
+ 
+   <label for="floatingInput">Email</label>
+  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"name="username">
 
   <label for="floatingPassword">Password</label>
-  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+  <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
 
-  <a href="homepage.html"><button type="button" class="btn btn-primary"> Log in</button></a>
+  <a ><button type="submit" class="btn btn-primary" name="login"> Log in</button></a>
 
   <br><br>
   <p style="text-align: center;font-size: 10pt;"><a href="Passwordreset.html">Forgot password?</a></p>
 
 </form>
-<form id="register" class="inputRegister" action="#" method="post">
+<form id="register" class="inputRegister" action="registration.php" method="POST">
     <label for="floatingInput">First Name</label>
-<input type="firstname" class="form-control" id="floatingInput" placeholder="First Name">
+<input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="first_name" required>
     
     <label for="floatingInput">Last Name</label>
-<input type="lastname" class="form-control" id="floatingInput" placeholder="Last Name">
+<input type="text" class="form-control" id="floatingInput" placeholder="Last Name" name="last_name" required>
     
     <label for="floatingInput">Email address</label>
-<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-   
-      <label for="floatingPassword">Password</label>
-<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
+
+<label for="floatingInput">Phone Number</label>
+<input type="tel" class="form-control" id="floatingInput" placeholder="0712345678" name="phone" required>
+
 <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-2 pt-0">Role</legend>
+  <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+  <div class="col-sm-10">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="F">
+      <label class="form-check-label" for="gridRadios2">
+        Female
+      </label>
+    </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="M">
+        <label class="form-check-label" for="gridRadios2">
+          Male
+        </label>
+    </div>
+  </div>
+  
+</fieldset>
+
+  <fieldset>
+    <label for="floatingPassword">Password</label>
+<input type="password" class="form-control" id="password" placeholder="Password" name="password" required minlength="6">
+
+</fieldset>
+
+<div class="form-grp">
+	 <label for="floatingPassword">Confirm Password</label>
+ <input type="password" class="form-control" id="confirm_password" placeholder="Password"name="pass_confirm" required minlength="6"><span style="margin-right:0px ;" id="message"></span>
+ 
+</div>
+<fieldset class="row mb-3">
+    <legend class="col-form-label col-sm-4 pt-0">Role</legend>
     <div class="col-sm-10">
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+        <input class="form-check-input" type="radio" name="user_role" id="gridRadios2" value="H" required>
         <label class="form-check-label" for="gridRadios2">
-          Student
+          Hostel Owner
         </label>
       </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+          <input class="form-check-input" type="radio" name="user_role" id="gridRadios2" value="S">
           <label class="form-check-label" for="gridRadios2">
-            Hostel
+            Student
           </label>
       </div>
     </div>
     
   </fieldset>
-   <a href="Popupmessage.html"><button type="button" class="btn btn-primary">Submit</button></a>
+ 
+ <button type="submit" class="btn btn-primary" name="submit" style="margin-bottom: 10px;">Submit</button>
 
 
 </form>
@@ -94,5 +128,33 @@ function login(){
 </script>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            
+            
+<script>
+  var password = document.querySelector('#password');
+  var cpassword = document.querySelector('#confirm_password');
+
+  $('#password, #confirm_password').on('keyup', function () {
+  if ($('#password').val() == $('#confirm_password').val()) {
+    var u_times = document.querySelector('.u_times');
+    var u_check = document.querySelector('.u_check');
+
+
+    $('#message').html('Matching').css('color', 'green');
+    password.style.border='2px solid green';
+    cpassword.style.border='2px solid green';
+  
+    
+  } else {
+    $('#message').html('Not Matching').css('color', 'red');
+    password.style.border='2px solid red';
+    cpassword.style.border='2px solid red';
+   }
+    })
+</script>
+
+
+</body>
 </body>
 </html>
