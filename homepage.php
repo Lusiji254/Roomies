@@ -47,7 +47,8 @@
 
 
       <h1 style="margin-top: -5%;">Get the Best Students Accomodation at <br> Roomies</h1>
-
+      <a href="hostel.html"><button type="submit" class="btn btn-primary" style="margin:auto"> Available Hostels</button></a>
+        
 </div>
 <section class="sp-head">
   <div class="container">

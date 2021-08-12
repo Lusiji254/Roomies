@@ -26,7 +26,7 @@ VALUES ('$first_name','$last_name','$email', '$phone','$gender','$password','$us
 
 //confirm whether password=password confirm
     if(mysqli_query($conn, $sql)){
-        //echo "<script>alert('Registration successful');</script>";;
+        echo "<script>alert('Registration successful');</script>";;
        // header('location:Registration.html');
       
             $msg = "Registration successful";
