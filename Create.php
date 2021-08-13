@@ -10,21 +10,22 @@ if(isset($_POST['submit'])){
     $gender=$_POST['gender'];
     $tel_number=$_POST['tel_number'];
     $amenities=$_POST['amenities'];
-    $pictures=$_FILES['pictures']['name'];
+   /* $pictures=$_FILES['pictures']['name'];
     $target="Images/".basename($pictures);
     
     if(!isset($_FILES['photo'])) {
       $error[] = "No photo selected !";
-  }
+  }*/
     
-    $sql="INSERT INTO `hostels` (`hostel_name`, `gender`, `location`, `tel_number`, `room_types`, `amenities`, `pictures`, `hostel_owner`) 
-    VALUES ('$hostel_name', '$gender', '$location', '$tel_number', '$room_types', '$amenities', '$pictures', '$hostel_owner')";
+    $sql="INSERT INTO `hostels` (`hostel_name`, `gender`, `location`, `tel_number`, `room_types`, `amenities`, `hostel_owner`) 
+    VALUES ('$hostel_name', '$gender', '$location', '$tel_number', '$room_types', '$amenities', '$hostel_owner')";
     $result=mysqli_query($conn,$sql);
 if($result){
-      if(move_uploaded_file($_FILES['pictures']['tmp_name'],$target)){
+      //if(move_uploaded_file($_FILES['pictures']['tmp_name'],$target)){
             
     echo "Data inserted Succefully";
-      }
+    header('location:View.php');
+      //}
 }else{
     die(mysqli_error($conn));
 }
@@ -54,7 +55,7 @@ if($result){
                 <i class="fas fa-bars ms-1"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-              <H4>Add Hostel at Roomies</H4>
+              <H4>Add a Hostel at Roomies</H4>
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#hostelprofile">Profile</a></li>
@@ -79,14 +80,14 @@ if($result){
            <input type="text" class="form-control" id="floatingInput" placeholder="Enter the hostel owner's name" name="hostel_owner" >
      </div>
      <div class="form-group">
+           <label >Telephone Number</label>
+           <input type="text" class="form-control"
+           placeholder="Enter Phone number" name="tel_number"autocomplete="off" >
+     </div>
+     <div class="form-group">
            <label >Location</label>
            <input type="text" class="form-control"
            placeholder="Enter the hostel's location" name="location" >
-     </div>
-     <div class="form-group">
-           <label >Room types</label>
-           <input type="text" class="form-control"
-           placeholder="Enter the room types available" name="room_types" >
      </div>
      <label for="floatingInput">Hostel Type</label>
      <div class="input-group mb-3">
@@ -99,13 +100,90 @@ if($result){
         </select>
         
         </div>
+
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Room Type</th>
+      <th scope="col">Price (Ksh)</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      <td><div class="form-check">
+        <input class="form-check-input" type="radio" name="single_room" id="gridRadios2" value="">
+        <label class="form-check-label" for="gridRadios2">
+          Single room  
+      </div> 
+</td>
+      <td>
+      <input type="text" class="form-control"
+           placeholder="Please Enter the Price of a single room" name="price"autocomplete="off" >
+           </label> 
+      </td>
+      
+    </tr>
+    <tr>
+      
+      <td>
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="double_room" id="gridRadios2" value="D">
+          <label class="form-check-label" for="gridRadios2">
+            Double Room
+          </label>
+      </div>
+
+      </td>
+      <td><input type="text" class="form-control"
+           placeholder="Please Enter the Price of a double room" name="price"autocomplete="off" >
+           </label> </td>
+      
+    </tr>
+    <tr>
+      
+      <td>
+            
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="twin_room" id="gridRadios2" value="T">
+          <label class="form-check-label" for="gridRadios2">
+            Twin Room
+          </label>
+    </div>
+
+      </td>
+      <td><input type="text" class="form-control"
+           placeholder="Please Enter the Price of a twin room" name="price"autocomplete="off" >
+           </label> </td>
+      
+      
+    </tr>
+    <tr>
+      
+      <td>
+            
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="twin_room" id="gridRadios2" value="Q">
+          <label class="form-check-label" for="gridRadios2">
+            Quadruple Room
+          </label>
+    </div>
+
+      </td>
+      <td><input type="text" class="form-control"
+           placeholder="Please Enter the Price of a Quadruple Room" name="price"autocomplete="off" >
+           </label> </td>
+      
+      
+    </tr>
+  </tbody>
+</table>
+
+     
+     
      <div class="form-group">
-           <label >Telephone Number</label>
-           <input type="text" class="form-control"
-           placeholder="Enter Phone number" name="tel_number"autocomplete="off" >
-     </div>
-     <div class="form-group">
-           <label >Amenities</label>
+           <label >Hostel Description and Amenities</label>
            <input type="text" class="form-control"
            placeholder="Enter the hostel's Amenities" name="amenities" >
      </div>
@@ -125,3 +203,4 @@ if($result){
 
   </body>
 </html>
+
