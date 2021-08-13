@@ -137,7 +137,7 @@
        <h1>Click here to book a hostels. <br> Simple and Fast :) </h1>
       </article>
       <br>
-      <a href="booking.html"><button type="submit" class="btn btn-primary"> Book Now</button></a>
+      <a href="booking.php"><button type="submit" class="btn btn-primary"> Book Now</button></a>
       
       </div>
       </section>

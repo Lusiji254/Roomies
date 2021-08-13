@@ -1,99 +1,113 @@
 * {
-padding: 0;
-margin: 0;
-font-family: sans-serif;
-}
-h1{
-    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    }
+    h1{
+        text-align: center;
+        
+    }
+    body {
+    background: url('Images/2shareroom.jpg') no-repeat;
+    background-size: cover;
+    color:black;
+    }/*
+    .registration_form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
     
-}
-body {
-background: url('Images/2shareroom.jpg') no-repeat;
-background-size: cover;
-color:black;
-}/*
-.registration_form {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 350px;
-
-}
-#login_form{
-    display: none;
-}*/
-a{
-text-align: center;
-color: green;
-
-}
-.form-box{
-width: 380px;
-height: 900px;
-position: relative;
-margin: 2% auto;
-background:rgb(228, 227, 226) ;
-padding: 10px;
-overflow: hidden;
-}
-.button-box{
-    width:220px;
-    margin: 35px auto;
+    }
+    #login_form{
+        display: none;
+    }*/
+    a{
+    text-align: center;
+    color: green;
+    }
+   
+    .form-box{
+    width: 380px;
+    height: 800px;
     position: relative;
-    box-shadow: 0 0 20px 9px #ff61241f;
-    border-radius: 30px;
-    top: -10%;
-}
-.toggle-btn{
-padding: 10px 30px;
-cursor: pointer;
-background: transparent;
-border: 0;
-outline: none;
-position: relative;
-}
-#btn1{
-top: 0px;
-left: 0;
-position: absolute;
-width: 110px;
-height: 100%;
-border-radius: 30px;
-transition: 3s;
-}
-#btn2{
+    margin: 2% auto;
+    background:rgb(228, 227, 226) ;
+    padding: 10px;
+    overflow: hidden;
+    }
+    .button-box{
+        width:220px;
+        margin: 35px auto;
+        position: relative;
+        box-shadow: 0 0 20px 9px #ff61241f;
+        border-radius: 30px;
+        top: -10%;
+    }
+    .toggle-btn{
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    }
+    #btn1{
     top: 0px;
-    right: 180px;
+    left: 0;
     position: absolute;
     width: 110px;
-    height: 100%;}
-.inputLogin{
-top: 130px;
-position: absolute;
-width: 280px;
-transition: 3s;
-}
-.inputRegister{
-    top: 45px;
+    height: 100%;
+    border-radius: 30px;
+    transition: 3s;
+    }
+    #btn2{
+        top: 0px;
+        right: 180px;
+        position: absolute;
+        width: 110px;
+        height: 100%;}
+    .inputLogin{
+    top: 130px;
     position: absolute;
     width: 280px;
     transition: 3s;
     }
-.form-control{
-width: 100%;
-padding: 10px 0;
-margin: 5px 0;
-border-left: 0;
-border-right: 0;
-border-bottom: 1px solid #999;
-outline: none;
-background: transparent;
-
+    .inputRegister{
+        top: 45px;
+        position: absolute;
+        width: 280px;
+        transition: 3s;
+        }
+    .form-control{
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+    
+        }
+    .fa{
+            position: absolute;
+            top: 50%;
+            right:8%;
+        }
+    .fa-times{
+            color: red;
+        
+        }
+    .fa-check{
+            color: green;
+        }
+    #register{
+     left: 450px;
     }
-#register{
- left: 450px;
-}
-#login{
-left: 50px;
-}
+    #login{
+    left: 50px;
+    }
+    
+    

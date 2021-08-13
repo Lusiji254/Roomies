@@ -46,8 +46,10 @@
 <div class="hero">
 
 
-      <h1 style="margin-top: -5%;">Get the Best Students Accomodation at <br> Roomies</h1>
-
+      <h1 style="margin-top: -5%;">Get the Best Students Accomodation at <br> Roomies
+      <br>
+      <a href="viewhostel.php"><button type="submit" class="btn btn-primary" style="margin:auto"> Available Hostels</button></a></h1>
+        
 </div>
 <section class="sp-head">
   <div class="container">

@@ -1,4 +1,9 @@
-<!doctype html>
+<?php 
+    session_start();
+    if(!isset($_SESSION['login_user'])){
+      header('location:Registration.html');
+    }
+?><!doctype html>
 <html lang="en">
 <head>
     <title>Hostel home Page</title>
@@ -33,6 +38,8 @@
                 </ul></p>
             </div>
         </div>
+        <?php 
+      echo $_SESSION['login_user'] ?>
         <p style="text-align: end;top: 0;"><a href="Registration.html">Log Out</a></p>
 </nav>
 
