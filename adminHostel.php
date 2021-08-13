@@ -152,6 +152,7 @@ if(status =='success'){
   alert("Hostel added successfully");
   $('#addHostelModal').modal('hide');
 }
+location.reload();
   }
 });
   }

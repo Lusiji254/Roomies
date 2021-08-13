@@ -236,6 +236,7 @@
               alert("Booking added successfully");
               $('#addBookingModal').modal('hide');
             }
+            location.reload();
           }
         });
       }

@@ -34,7 +34,7 @@ if($row['user_status']=='Active'){
     }else if($row['user_role'] == "H"){
 
       $_SESSION['login_user'] = $myusername;
-        header('Location: homepage.php');
+        header('Location: display.php');
     }
    }else{
       $_SESSION['message']="You account has been disabled,please contact the admin";

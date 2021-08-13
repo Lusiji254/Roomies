@@ -17,17 +17,7 @@ if(isset($_POST['search']['value'])){
     $sql .="OR user_role like '%".$search_value."%'"; 
     $sql .="OR user_status like '%".$search_value."%'"; 
 }
-foreach($result as $row){
 
-    $status = '';
-    if($row['user_status']== 'Active'){
-        $status = '<span class="label label-success">Active</span>';
-
-    }else{
-        $status = '<span class="label label-danger">Inactive</span>';
-    }
-
-}
 if(isset($_POST['order']))
 {
     $column = $_POST['order'][0]['column'];
@@ -50,9 +40,12 @@ while($row = mysqli_fetch_assoc($run_query)){
     $subarray[]= $row['gender'];
     $subarray[]= $row['password'];
     $subarray[]= $row['user_role'];
-    $subarray[]= $status;
+    $s = $row['user_status'] == 'Active' ? 'success' : 'danger';
+    $btnColor = $row['user_status'] == 'Active' ? 'danger' : 'success';
+    $d = $row['user_status'] == 'Active' ? 'Disable' : 'Enable';
+    $subarray[]=  '<span class="badge bg-'. $s .'">'. $row['user_status'] .'</span>';
     $subarray[]= '<button type="button" id="'.$row['id'].'" data-bs-toggle="modal" data-bs-target="#editUserModal" class="btn btn-sm btn-info editBtn">Edit</button>
-     <button type="button" data-user_status="'.$row['user_status'].'" data-id="'.$row['id'].'" class="btn btn-sm btn-danger disableBtn">Disable</button>';
+     <button type="button" data-user_status="'.$row['user_status'].'" data-id="'.$row['id'].'" class="btn btn-sm btn-'. $btnColor .' disableBtn">'. $d .'</button>';
      $data[]= $subarray;
      }
 

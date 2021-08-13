@@ -1,8 +1,8 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['login_user'])){
-      header('location:Registration.html');
-    }
+<?php
+session_start();
+if (!isset($_SESSION['login_user'])) {
+  header('location:Registration.html');
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,29 +20,31 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg light " id="mainNav">
-        <div class="container">
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars ms-1"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-              <H4>Roomies</H4>
-                <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="adminUser.php">Users</a></li>
-                    <li class="nav-item"><a class="nav-link" href="adminHostel.php">Hostels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="adminBookings.php">Bookings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
-                </ul></p>
-            </div>
-            <?php 
+  <nav class="navbar navbar-expand-lg navbar-light bg light " id="mainNav">
+    <div class="container">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars ms-1"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <H4>Roomies</H4>
+        <p>
+        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+          <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminUser.php">Users</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminHostel.php">Hostels</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminBookings.php">Bookings</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
+        </ul>
+        </p>
+      </div>
+      <?php
       echo $_SESSION['login_user'] ?>
-        </div>
-            
-        <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
-</nav>
+    </div>
+
+    <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
+  </nav>
   <h4 class="text-center"> User Management</h4>
   <div class="container-fluid">
     <div class="row">
@@ -272,7 +274,6 @@
       'ajax': {
         'url': 'fetch_user.php',
         'type': 'post',
-
       },
       'fnCreateRow': function(nRow, aData, iDataIndex) {
 
@@ -320,39 +321,50 @@
               alert("User added successfully");
               $('#addUserModal').modal('hide');
             }
+            location.reload();
           }
         });
       }
     });
-  $(document).ready(function(){
-    $(document).on('click', '.editBtn', function(event) {
-         var id = $(this).attr('id');
+    $(document).ready(function() {
+      $(document).on('click', '.editBtn', function(event) {
+        var id = $(this).attr('id');
 
-         $('#editUserModal').show();
-      
+        $('#editUserModal').show();
+        $.ajax({
+         url: 'get_single_user.php',
+         type:'post',
+          data:{}
+        })
+
+      });
     });
-  });
-  $(document).on('click','.disableBtn',function(){
-    var id = $(this).data('id');
-    var user_status =$(this).data('user_status');
+    $(document).on('click', '.disableBtn', function() {
+      var id = $(this).data('id');
+      var user_status = $(this).data('user_status');
 
-    var action = 'change_status';
-    $('#message').html('');
-    if(confirm("Are you sure you want to change user status?")){
+      var action = 'change_status';
+      $('#message').html('');
+      if (confirm("Are you sure you want to change user status?")) {
 
-      $.ajax({
-        url:'disable_user.php',
-        type:'post',
-        data:{id:id,user_status:user_status,action:action},
-        success:function(data){
-        
-          $('#message').html(data);
-          
-                 }
-        
-    }); 
-  }   
-  });
+        $.ajax({
+          url: 'disable_user.php',
+          type: 'post',
+          data: {
+            id: id,
+            user_status: user_status,
+            action: action
+          },
+          success: function(data) {
+
+            $('#message').html(data);
+            location.reload();
+
+          }
+
+        });
+      }
+    });
   </script>
 
 </body>
