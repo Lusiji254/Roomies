@@ -97,14 +97,14 @@
         ?>
         <div class="col-md-4 mt-3">
             <div class="card">
-            <img src="uploads/<?php echo $row['pictures'];?>" width="260px" height="200px" alt="Hostel images">
+            <img src="<?php echo $row['pictures'];?>" width="80%" height="200px" style="margin:auto;"alt="Hostel images">
                 <div class="card-body">
                     <h4 style="text-align:center;"class="card-title">Hostel Name: <?php echo $row['hostel_name'];?></h4>
-                    <p style="font-size:18px;"class="card-text"> Contact: <?php echo $row['hostel_owner'];?><br><?php echo $row['tel_number'];?></p>
-                    <p style="font-size:18px;" class="card-text">Hostel Type: <?php echo $row['gender'];?>  </p>
-                    <p style="font-size:18px;"class="card-text">Room types available: <?php echo $row['room_types'];?></p>
-                    <p style="font-size:18px;"class="card-text">Amenities: <?php echo $row['amenities'];?></p>
-
+                    <p style="font-size:18px;"class="card-text"> Gender: <?php echo $row['gender'];?></p>
+                    <p style="font-size:18px;" class="card-text">Loaction: <?php echo $row['location'];?>  </p>
+                    <p style="font-size:18px;"class="card-text">Email: <?php echo $row['hostel_owner'];?></p>
+                    <p style="font-size:18px;"class="card-text">Tel Number <?php echo $row['tel_number'];?></p>
+                    <a href="booking.php"><button type="submit" class="btn btn-primary"> Book Now</button></a>
                 </div>
                 </div>
             </div>
