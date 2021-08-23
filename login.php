@@ -19,8 +19,9 @@
       $sql = "SELECT * FROM `user` WHERE email = '$myusername' AND password='$mypassword'";
       $result = mysqli_query($conn,$sql);
       $row = mysqli_fetch_array($result);
-
-if($row['user_status']=='Active'){
+      
+if($row['verified']=='Verified'){
+if($row['user_status']=='Active' ){
          if($row['user_role'] == "A")
     {
       $_SESSION['login_user'] = $myusername;
@@ -37,9 +38,12 @@ if($row['user_status']=='Active'){
         header('Location: display.php');
     }
    }else{
-      $_SESSION['message']="You account has been disabled,please contact the admin";
+      echo "You account has been disabled,please contact the admin";
      // echo'<script>()</script>';
    }
+  }else{
+    echo "You account is not verified. A verfication email was sent to ".$row['email'].". Please verify to log in.";
+  }
     
     
       }
