@@ -2,7 +2,10 @@
     session_start();
     if(!isset($_SESSION['login_user'])){
       header('location:Registration.html');
+
     }
+    unset($_SESSION['hostelId']);
+    unset($_SESSION['hostelName']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -31,8 +34,9 @@
               <H4>Roomies</H4>
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="hostel.html">Hostels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="viewHostel.php">Hostels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mybookings.php">Bookings</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
                 </ul></p>

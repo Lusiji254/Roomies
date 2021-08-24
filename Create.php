@@ -51,7 +51,7 @@
               
               }
             }
-            header('location:View.php');
+            header('location:totalHostels.php');
 
           } else {
             die(mysqli_error($conn));
@@ -60,7 +60,7 @@
           echo "file upload failed";
         }
       } else {
-        echo "please upload jpg";
+        //echo "please upload jpg";
       }
     
     ?>

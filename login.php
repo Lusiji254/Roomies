@@ -19,7 +19,9 @@
       $sql = "SELECT * FROM `user` WHERE email = '$myusername' AND password='$mypassword'";
       $result = mysqli_query($conn,$sql);
       $row = mysqli_fetch_array($result);
-      
+
+  echo"wrong password";
+}     
 if($row['verified']=='Verified'){
 if($row['user_status']=='Active' ){
          if($row['user_role'] == "A")
@@ -46,6 +48,6 @@ if($row['user_status']=='Active' ){
   }
     
     
-      }
+      
    
 ?>

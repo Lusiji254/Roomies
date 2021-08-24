@@ -1,4 +1,11 @@
-<?php include('config.php')?>
+<?php
+session_start();
+if (!isset($_SESSION['login_user'])) {
+  header('location:Registration.html');
+} 
+unset($_SESSION['hostelId']);
+    unset($_SESSION['hostelName']);
+include('config.php')?>
 
 
 
@@ -30,14 +37,17 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <H4>Roomies</H4>
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="hostel.html">Hostels</a></li>
+                <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="viewHostel.php">Hostels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mybookings.php">Bookings</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
                 </ul></p>
             </div>
         </div>
+        <?php
+        echo $_SESSION['login_user'] ?>
         <p style="text-align: end;top: 0;"><a href="Registration.html">Log Out</a></p>
 </nav>
 <div class="hero">        
@@ -49,22 +59,23 @@
     </form>
     <form id="register" class="search" action="#" method="post">
         <label for="floatingInput">Location</label>
-    <input type="location" class="form-control" id="floatingInput" placeholder="Where do you want to stay?">
+    <input type="text" class="form-control" id="floatingInput" name="location" placeholder="Where do you want to stay?">
     <label for="floatingInput">Maximum Price</label>
-    <input type="maximumPrice" class="form-control" id="floatingInput" placeholder="Ksh">
+    <input type="maximumPrice" class="form-control" id="floatingInput"name="price" placeholder="Ksh">
     <label for="floatingInput">Hostel Type</label>
     <div class="input-group mb-3">
-        <select class="form-select" id="inputGroupSelect02">
+        <select class="form-select" id="inputGroupSelect02" name='gender'>
           <option selected ></option>
-          <option value="1">Male</option>
-          <option value="2">Female</option>
-          <option value="3">Mixed</option>
+          <option value="Male"name='gender'>Male</option>
+          <option value="Female" name='gender'>Female</option>
+          <option value="Mixed" name='gender'>Mixed</option>
         </select>
         </div>
         
-    <button type="submit" class="btn btn-primary">Search</button>
+    <button type="submit" name="search" class="btn btn-primary">Search</button>
           
     </form>
+  
     </div>
     </div>
     </div>
@@ -79,32 +90,49 @@
         
           </div>
           </section>
+          <div class="container py-5">
+    <div class="row mt-4">
+     <?php
+          
+       
+    if(isset($_POST['search'])){
+$location=$_POST['location'];
+$gender=$_POST['gender'];
+$price=$_POST['price'];
+
+
+
+       
+        $query="SELECT * FROM `hostels` WHERE location ='$location' AND gender ='$gender' AND hostel_ID IN 
+        (SELECT hostelID FROM `roomtypes` WHERE price <='$price')";
+        $query_run=mysqli_query($conn, $query);
+        $check_hostels =mysqli_num_rows($query_run) > 0;
+            if($check_hostels){
+                while($row = mysqli_fetch_array($query_run))
+                {
+                  $id=$row['hostel_ID'];
+                  $name=$row['hostel_name'];
+                  $_SESSION['hostelId']=$id;
+                  $_SESSION['hostelName']=$name;
+           
+        ?>
 
 
 
 <!-- HOSTEL DISPLAY DATA TRIAL -->
 <div class="container py-5">
     <div class="row mt-4">
-        <?php  
-       
-        $query="SELECT * FROM hostels";
-        $query_run=mysqli_query($conn, $query);
-        $check_hostels =mysqli_num_rows($query_run) > 0;
-            if($check_hostels){
-                while($row = mysqli_fetch_array($query_run))
-                {
-
-        ?>
+        
         <div class="col-md-4 mt-3">
             <div class="card">
             <img src="<?php echo $row['pictures'];?>" width="80%" height="200px" style="margin:auto;"alt="Hostel images">
                 <div class="card-body">
                     <h4 style="text-align:center;"class="card-title">Hostel Name: <?php echo $row['hostel_name'];?></h4>
                     <p style="font-size:18px;"class="card-text"> Gender: <?php echo $row['gender'];?></p>
-                    <p style="font-size:18px;" class="card-text">Loaction: <?php echo $row['location'];?>  </p>
+                    <p style="font-size:18px;" class="card-text">Location: <?php echo $row['location'];?>  </p>
                     <p style="font-size:18px;"class="card-text">Email: <?php echo $row['hostel_owner'];?></p>
                     <p style="font-size:18px;"class="card-text">Tel Number <?php echo $row['tel_number'];?></p>
-                    <a href="booking.php"><button type="submit" class="btn btn-primary"> Book Now</button></a>
+                    <a href="hostelProfile.php?hostel=<?php echo $id;?>"><button type="submit" class="btn btn-primary"> View</button></a>
                 </div>
                 </div>
             </div>
@@ -112,11 +140,50 @@
 
                                   
                 }
+              }
  
-            }else{
-                echo"No Hostels Found";
-            }
-        ?>
+           
+            
+          }else{
+          
+  
+
+            $sql="SELECT * FROM `hostels`";
+              $sql_run=mysqli_query($conn, $sql);
+          $check_hostel =mysqli_num_rows($sql_run) > 0;
+              if($check_hostel){
+                  while($row = mysqli_fetch_array($sql_run))
+                  { $id=$row['hostel_ID'];
+                    $name=$row['hostel_name'];
+                    $_SESSION['hostelId']=$id;
+                    $_SESSION['hostelName']=$name;
+                
+
+                    ?>
+                    <!-- HOSTEL DISPLAY DATA TRIAL -->
+  
+          
+          <div class="col-md-4 mt-3">
+              <div class="card">
+              <img src="<?php echo $row['pictures'];?>" width="80%" height="200px" style="margin:auto;"alt="Hostel images">
+                  <div class="card-body">
+                      <h4 style="text-align:center;"class="card-title">Hostel Name: <?php echo $row['hostel_name'];?></h4>
+                      <p style="font-size:18px;"class="card-text"> Gender: <?php echo $row['gender'];?></p>
+                      <p style="font-size:18px;" class="card-text">Location: <?php echo $row['location'];?>  </p>
+                      <p style="font-size:18px;"class="card-text">Email: <?php echo $row['hostel_owner'];?></p>
+                      <p style="font-size:18px;"class="card-text">Tel Number <?php echo $row['tel_number'];?></p>
+                      <a href="hostelProfile.php?hostel=<?php echo $id;?>"><button type="submit" class="btn btn-primary"> View</button></a>
+                  </div>
+                  </div>
+              </div>
+              <?php
+                  }
+                }
+              }
+                ?>
+        
+           
+
 
 
         
