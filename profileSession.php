@@ -10,8 +10,12 @@
    
    //$login_session = $row['username'];
    
-   if(!isset($_SESSION['login_user'])){
-      header("location:login.php");
+   //if(!isset($_SESSION['login_user'])){
+    if(isset($_POST['submit']))
+    {
+     header("location:updateProfile.php");
       die();
    }
+
+   
 ?>

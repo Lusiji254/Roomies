@@ -1,7 +1,4 @@
 
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -94,7 +91,7 @@
                 while($row = mysqli_fetch_array($query_run))
                 {
 
-        ?>
+        ?> 
         <div class="col-md-4 mt-3">
             <div class="card">
             <img src="uploads/<?php echo $row['pictures'];?>" width="260px" height="200px" alt="Hostel images">
@@ -126,10 +123,6 @@
 
 
 </div>
-
-
-
-
     
   <section class="sp-head">
     <div class="container">
