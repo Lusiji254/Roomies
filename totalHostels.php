@@ -31,10 +31,9 @@
               <H4>Roomies</H4>
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hostelProfile.php">My Rooms</a></li>
                     <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="HostelAboutUs.php">About Us</a></li>
                 </ul></p>
             </div>
             <?php 

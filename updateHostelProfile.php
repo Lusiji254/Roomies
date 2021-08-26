@@ -31,10 +31,10 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <H4>Roomies</H4>
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="viewHostel.php">Hostels</a></li>
-           <li class="nav-item"><a class="nav-link" href="AboutUs.php">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="HOProfile.php">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostels</a></li>
+           <li class="nav-item"><a class="nav-link" href="HostelAboutUs.php">About Us</a></li>
                 </ul>
                 
          </div>
@@ -60,7 +60,7 @@
 
 <div  class="form-box">
     
-<form id="register" class="inputRegister" action="updateProfile.php" method="POST" enctype="multipart/form-data">
+<form id="register" class="inputRegister" action="updateHostelProfile.php" method="POST" enctype="multipart/form-data">
     <label for="floatingInput">First Name</label>
 <input type="text" class="form-control" id="floatingInput"  name="first_name" value="<?php echo $row['first_name'];?>" required>
     
@@ -119,7 +119,7 @@
     
   </fieldset>
  
- <button type="submit" class="btn btn-primary" name="update" style="margin-bottom: 10px;">Update</button>
+ <button type="submit1" class="btn btn-primary" name="update" style="margin-bottom: 10px;">Update</button>
 
 
 </form>
@@ -150,7 +150,7 @@ if($result)
      ?>
      <script type="text/javascript">
      alert("Data Updated Sucessfully");
-     window.location="profile.php";
+     window.location="HOProfile.php";
      </script>
      <?php
    }

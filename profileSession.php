@@ -16,6 +16,11 @@
      header("location:updateProfile.php");
       die();
    }
+   if(isset($_POST['submit1']))
+    {
+     header("location:updateHostelProfile.php");
+      die();
+   }
 
    
 ?>
