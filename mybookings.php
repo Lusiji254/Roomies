@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!isset($_SESSION['login_user'])){
-      header('location:Registration.html');
+      header('location:Registration.php');
     }
     unset($_SESSION['hostelId']);
     unset($_SESSION['hostelName']);
@@ -82,24 +82,24 @@
         <td><?php echo '<span class="badge bg-'. $s .'">'. $row['status'] .'</span>';?></td>
 
       </tr>
-      <?php
-      if( $row['status'] == 'Accepted'){?>
+      
   </tbody>
 
 </table>
 
 <div class="col-md-1"></div>
-
+<?php
+      if( $row['status'] == 'Accepted'){?>
       <button type="submit" class="btn btn-primary"> Proceed to payment</button>
         <?php
       }else{
         ?>
         <div class=" row">
-        <div class="col-md-6"></div>
-<div  class=" col-md-2 alert alert-danger" role="alert">
+        <div class="col-md-4"></div>
+<div  class=" col-md-8 alert alert-danger" role="alert">
  You cannot make payment until your booking is accepted
       </div>
-      <div class="col-md-4"></div>
+    
         </div>
         <?php
       }

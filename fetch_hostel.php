@@ -31,15 +31,19 @@ $run_query = mysqli_query($conn,$sql);
 $filtered_rows= mysqli_num_rows($run_query);
 
 while($row = mysqli_fetch_assoc($run_query)){
+    $image='';
+    if($row['pictures']!=''){
+        $image='<img src="'.$row['pictures'].'" class="img-thumbnail" width="100" height="100"/>';
+
+    }
     $subarray = array();
     $subarray[]= $row['hostel_ID'];
     $subarray[]= $row['hostel_name'];
     $subarray[]= $row['gender'];
     $subarray[]= $row['location'];
     $subarray[]= $row['tel_number'];
-    $subarray[]= $row['room_types'];
     $subarray[]= $row['amenities'];
-    $subarray[]= $row['pictures'];
+    $subarray[]= $image;
     $subarray[]= $row['hostel_owner'];
     $subarray[]= '<a href="javascript:void();" id="'.$row['hostel_ID'].'" class="btn btn-sm btn-info editBtn">Edit</a> <a href="javascript:void();" data-id="'.$row['hostel_ID'].'" class="btn btn-sm btn-danger">Disable</a>';
      $data[]= $subarray;

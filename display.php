@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!isset($_SESSION['login_user'])){
-      header('location:Registration.html');
+      header('location:Registration.php');
     }
 ?><!doctype html>
 <html lang="en">
@@ -30,9 +30,14 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <H4>Roomies</H4>
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+<<<<<<< HEAD
+                <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+=======
                     
                     <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="HOProfile.php">Profile</a></li>
+>>>>>>> 3287d576ca972ee8058c828b628a5fc01e8683aa
                     <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostels</a></li>
                     <li class="nav-item"><a class="nav-link" href="HostelAboutUs.php">About Us</a></li>
                 </ul></p>
@@ -40,7 +45,7 @@
         </div>
         <?php 
       echo $_SESSION['login_user'] ?>
-        <p style="text-align: end;top: 0;"><a href="Registration.html">Log Out</a></p>
+        <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
 </nav>
 
 <div class="hero">

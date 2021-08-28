@@ -1,5 +1,8 @@
 
-<?php include('profileSession.php')?>
+<?php 
+include('profileSession.php');
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -43,23 +46,72 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <H4>Roomies</H4>
+              <?php
+     
+
+             $user= $_SESSION['login_user'] ;
+$sql="SELECT user_role FROM `user` WHERE email = '$user' ";
+$result=mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+if($row['user_role']=='Hostel Owner'){
+             ?>
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+<<<<<<< HEAD
+                    <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
+           <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
+=======
                     <li class="nav-item"><a class="nav-link" href="viewHostel.php">Hostels</a></li>
                     <li class="nav-item"><a class="nav-link" href="mybookings.php">Bookings</a></li>
                     <li class="nav-item"><a class="nav-link" href="AboutUs.php">About Us</a></li>
+>>>>>>> 3287d576ca972ee8058c828b628a5fc01e8683aa
                 </ul>
                 <?php
             echo $_SESSION['login_user'];
             ?></p>
+            <?php
+            }elseif($row['user_role']=='Student'){?>
+
+<p>
+<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mybookings.php">Bookings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hostel.html">Hostels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
+                </ul>
+                <?php
+            echo $_SESSION['login_user'];
+            ?></p>
+            <?php
+            }else{?>
+                <p>
+        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+          <li class="nav-item"><a class="nav-link" href="adminHome.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminUser.php">Users</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminHostel.php">Hostels</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminBookings.php">Bookings</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
+        </ul>
+        </p>
+      </div>
+      <?php
+      echo $_SESSION['login_user'];
+       ?>
+      <?php
+            }
+            ?>
          </div>
         </div>
         
 
-        <p style="text-align: end;top: 0;"><a href="Registration.html">Log Out</a></p>
-</nav><br><br>
-<?php
+        <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
+</nav>
 
 
     $query="SELECT * FROM  `user` WHERE email='$_SESSION[login_user]'";
@@ -193,7 +245,7 @@ echo "<tr>";
     echo "</td>";
 echo "</tr>";
 
-echo "<tr>";
+/*echo "<tr>";
     echo "<td>";
     echo"<b> Password:</b>";
     echo "</td>";
@@ -201,7 +253,7 @@ echo "<tr>";
     echo "<td>";
     echo $row['password'];
     echo "</td>";
-echo "</tr>";
+echo "</tr>";*/
 
 
 echo "</table>";

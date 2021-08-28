@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!isset($_SESSION['login_user'])){
-      header('location:Registration.html');
+      header('location:Registration.php');
     }
 ?>
 <!doctype html>
@@ -31,11 +31,12 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <H4>Roomies</H4>
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="adminUser.php">Users</a></li>
-                    <li class="nav-item"><a class="nav-link" href="adminHostel.php">Hostels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="adminBookings.php">Bookings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminHome.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminUser.php">Users</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminHostel.php">Hostels</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminBookings.php">Bookings</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
                 </ul></p>
             </div>
             <?php 
@@ -68,7 +69,6 @@
                     <th>Gender</th>
                     <th>Location</th>
                     <th>Telephone</th>
-                    <th>Room Type</th>
                     <th>Amenities</th>
                     <th>Pictures</th>
                     <th>Hostel Owner</th>
@@ -122,7 +122,6 @@ $(document).on('submit','#saveHostelForm',function(event){
   var gender =$('input[name= "gender"]').val();
   var location =$('#inputLocation').val();
   var telephone =$('#inputTelephone').val();
-  var roomtype =$('input[name= "roomtype"]').val();
   var amenities =$('#inputAmenities').val();
   var picture =$('#inputPicture').val().split('.').pop().toLowerCase();
   var hostelowner =$('#inputHostelOwner').val();

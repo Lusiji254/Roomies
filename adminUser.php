@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['login_user'])) {
-  header('location:Registration.html');
+  header('location:Registration.php');
 }
 ?>
 <!doctype html>
@@ -31,7 +31,8 @@ if (!isset($_SESSION['login_user'])) {
         <H4>Roomies</H4>
         <p>
         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-          <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminHome.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
           <li class="nav-item"><a class="nav-link" href="adminUser.php">Users</a></li>
           <li class="nav-item"><a class="nav-link" href="adminHostel.php">Hostels</a></li>
           <li class="nav-item"><a class="nav-link" href="adminBookings.php">Bookings</a></li>
@@ -64,8 +65,8 @@ if (!isset($_SESSION['login_user'])) {
           </div>
         </div>
         <div class="row">
-          <div class="col-md-1"></div>
-          <div class="col-md-10">
+          <!--<div class="col-sm-1"></div>-->
+          <div class="col-md-12">
             <table id="datatable" class="table" style="width:100%; ">
               <thead>
                 <tr>
@@ -75,9 +76,10 @@ if (!isset($_SESSION['login_user'])) {
                   <th>Email</th>
                   <th>Phone Number</th>
                   <th>Gender</th>
-                  <th>Password</th>
+                 
                   <th>User Role</th>
                   <th>User Status</th>
+                  <th>Verification</th>
                   <th>Actions</th>
                 </tr>
               </thead>

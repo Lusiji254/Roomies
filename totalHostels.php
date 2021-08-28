@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!isset($_SESSION['login_user'])){
-      header('location:Registration.html');
+      header('location:Registration.php');
     }
 ?>
 <!doctype html>
