@@ -1,13 +1,10 @@
 
-<?php 
-include('profileSession.php');
-
-?>
+<?php include('profileSession.php')?>
 
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Profile  Page</title>
+    <title>Hostel Profile  Page</title>
     
       <!-- Required meta tags -->
       <meta charset="utf-8">
@@ -15,6 +12,7 @@ include('profileSession.php');
   
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/dist/css/bootstrap.min.css" >
   
     <link rel="stylesheet" href="hostel.css">
     <style>
@@ -37,6 +35,7 @@ include('profileSession.php');
 <body>
 
     <!-- Navigation -->
+    
     <nav class="navbar navbar-expand-lg navbar-light bg light " id="mainNav">
         <div class="container">
             
@@ -45,73 +44,23 @@ include('profileSession.php');
                 <i class="fas fa-bars ms-1"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-              <H4>Roomies</H4>
-              <?php
-     
-
-             $user= $_SESSION['login_user'] ;
-$sql="SELECT user_role FROM `user` WHERE email = '$user' ";
-$result=mysqli_query($conn,$sql);
-$row = mysqli_fetch_assoc($result);
-if($row['user_role']=='Hostel Owner'){
-             ?>
+            <br><br> <H4>Roomies</H4>
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-<<<<<<< HEAD
-                    <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
-           <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
-=======
-                    <li class="nav-item"><a class="nav-link" href="viewHostel.php">Hostels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="mybookings.php">Bookings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="AboutUs.php">About Us</a></li>
->>>>>>> 3287d576ca972ee8058c828b628a5fc01e8683aa
+                    <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="HOProfile.php">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hostelProfile.php">My Rooms</a></li>
+                     <li class="nav-item"><a class="nav-link" href="HostelAboutUs.php">About Us</a></li>
                 </ul>
                 <?php
             echo $_SESSION['login_user'];
             ?></p>
-            <?php
-            }elseif($row['user_role']=='Student'){?>
-
-<p>
-<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="mybookings.php">Bookings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="hostel.html">Hostels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
-                </ul>
-                <?php
-            echo $_SESSION['login_user'];
-            ?></p>
-            <?php
-            }else{?>
-                <p>
-        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-          <li class="nav-item"><a class="nav-link" href="adminHome.php">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-          <li class="nav-item"><a class="nav-link" href="adminUser.php">Users</a></li>
-          <li class="nav-item"><a class="nav-link" href="adminHostel.php">Hostels</a></li>
-          <li class="nav-item"><a class="nav-link" href="adminBookings.php">Bookings</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
-        </ul>
-        </p>
-      </div>
-      <?php
-      echo $_SESSION['login_user'];
-       ?>
-      <?php
-            }
-            ?>
          </div>
         </div>
         
 
-        <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
-</nav>
+        <p style="text-align: end;top: 0;"><a href="Registration.html">Log Out</a></p>
+</nav><br><br>
+<?php
 
 
     $query="SELECT * FROM  `user` WHERE email='$_SESSION[login_user]'";
@@ -120,7 +69,10 @@ if($row['user_role']=='Hostel Owner'){
     //$row = mysqli_fetch_assoc($result); 
 //echo"<img class='img-circle profile_img' src='images/".$_SESSION[pic]."'>";
     ?>
-    <div class="row">
+
+
+
+<div class="row">
             <div clas="col-md-4 mt-1">
                 <div class="card text-center sidebar" style="background-color:teal;color: black;
              height: 115%;
@@ -129,21 +81,27 @@ if($row['user_role']=='Hostel Owner'){
                         <img src="Images/User.jpg" class="rounded-circle" width="150"alt="#">
                         <div class="mt-3" >
                             <h3><?php echo $row['first_name'];?> <?php echo $row['last_name'];?> </h3>
-                                <a href="homepage.php"style="
+                                <a href="display.php"style="
              margin-left: 10px;
              display: block;
              color: black;
              padding-bottom: 10px;
              font-size: 26px;
              text-decoration: none;">Home</a>
-                                <a href="UpdateProfile.php"style="
+                                <a href="UpdateHostelProfile.php"style="
              margin-left: 10px;
              display: block;
              color: black;
              padding-bottom: 10px;
              font-size: 26px;
              text-decoration: none;"> Edit Profile</a>
-                                
+                                <a href="hostelProfile.php"style="
+             margin-left: 10px;
+             display: block;
+             color: black;
+             padding-bottom: 10px;
+             font-size: 26px;
+             text-decoration: none;">My Rooms</a>
                                 <a href="Registration.html"style="
              margin-left: 10px;
              display: block;
@@ -181,7 +139,6 @@ if($row['user_role']=='Hostel Owner'){
     
     <div class="form-box">
         <h3>My profile</h3><br>
-        
         
 <?php
 echo "<table class='table'>";
@@ -245,7 +202,7 @@ echo "<tr>";
     echo "</td>";
 echo "</tr>";
 
-/*echo "<tr>";
+echo "<tr>";
     echo "<td>";
     echo"<b> Password:</b>";
     echo "</td>";
@@ -253,23 +210,73 @@ echo "</tr>";
     echo "<td>";
     echo $row['password'];
     echo "</td>";
-echo "</tr>";*/
+echo "</tr>";
 
 
 echo "</table>";
 ?>
 
-</div>
-        </div>
 
+</div>
+        </div>       
         <div class="container">
             <form action="" method="POST">
             
-            <button class="btn btn-primary" style="float:right;width:70px;" name="submit"> Edit</button>
+            <button class="btn btn-primary" style="float:right;width:70px;" name="submit1"> Edit</button>
             </form>
 
             </div>
    <br><br><br>
+
+<div class="row">
+<div class="col-md-1"></div>
+<table class=" col-md-10 table table-striped">
+<thead>
+    <tr>
+    <th>Hostel Id</th>
+                    <th>Hostel Name</th>
+                    <th>Gender</th>
+                    <th>Location</th>
+                    <th>Telephone</th>
+                    <th>Amenities</th>
+                    <th>Pictures</th>
+                    <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php 
+    
+
+    $owner=$_SESSION['login_user'];
+
+    $sql="SELECT * FROM hostels WHERE hostel_owner ='$owner' ";
+    $query = mysqli_query($conn,$sql);
+    while($row=mysqli_fetch_assoc($query)){ ?>
+
+      <tr>
+      <td ><?php echo $row["hostel_ID"]?></td>
+        <td><?php echo $row['hostel_name']?></td>
+        <td><?php echo $row['gender']?></td>
+        <td><?php echo $row['location']?></td>
+        <td><?php echo $row['tel_number']?></td>
+        <td><?php echo $row['amenities']?></td>
+        <td><img src='<?php echo $row['pictures']?>'width="150px" height="150px"></td>
+       
+            
+     <td> <a type="button"  class="btn btn-sm btn-primary" href="hostelEdits.php?hostel=<?php echo $row['hostel_ID'];?>">Edit</a>
+     <a type="button"  class="btn btn-sm btn-primary" href="hostelbookings.php?hostel=<?php echo $row['hostel_ID'];?>">Bookings</a></td>
+
+      </tr>
+  <?php  }?>
+  </tbody>
+</table>
+
+<div class="col-md-1"></div>
+
+
+</div>
+
+
       <footer style="color: white;text-align: center;" class="footer">
         
     <p class="text-muted small mb-4 mb-lg-0">&copy; Roomies 2021. All Rights Reserved.</p>

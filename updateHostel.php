@@ -18,7 +18,7 @@ if(isset($_POST['update'])){
          
                 $result = mysqli_query($conn, $sql);
                 if($result){
-                   header('location:totalHostels.php');
+                   header('location:HOProfile.php');
                 }
 
       }
