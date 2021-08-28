@@ -42,7 +42,7 @@ VALUES ('$first_name','$last_name','$email', '$phone','$gender','$password','$us
    $headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
 
    if(mail($to,$subject,$message,$headers)){
-       ini_set();
+     
     header('location:thankyou.html');
    }
 
