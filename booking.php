@@ -2,7 +2,7 @@
     session_start();
   
     if(!isset($_SESSION['login_user'])){
-      header('location:Registration.html');
+      header('location:Registration.php');
     }
 ?>
 <!doctype html>
@@ -45,7 +45,7 @@
         <?php 
       echo $_SESSION['login_user'] ?>
         </div>
-        <p style="text-align: end;top: 0;"><a href="Registration.html">Log Out</a></p>
+        <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
 </nav>
 <div class="hero">        
 
@@ -56,7 +56,7 @@
     </form>
     <form id="register" class="search" action="bookingAction.php" method="post">
   
-    <input type="text" class="form-control" name="hostelid" value=<?php echo $_SESSION['hostelId'];?>hidden >
+    <input type="text" class="form-control" name="hostelid" value=<?php echo $_SESSION['hostelId'];?> hidden >
      
     <input type="text" class="form-control" name="hostelname" value=<?php echo $_SESSION['hostelName'];?> hidden >
     <label for="floatingInput">Room Type</label>

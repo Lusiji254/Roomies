@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['login_user'])) {
-  header('location:Registration.html');
+  header('location:Registration.php');
 } 
 unset($_SESSION['hostelId']);
     unset($_SESSION['hostelName']);
@@ -48,7 +48,7 @@ include('config.php')?>
         </div>
         <?php
         echo $_SESSION['login_user'] ?>
-        <p style="text-align: end;top: 0;"><a href="Registration.html">Log Out</a></p>
+        <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
 </nav>
 <div class="hero">        
 

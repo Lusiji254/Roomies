@@ -38,8 +38,10 @@ while($row = mysqli_fetch_assoc($run_query)){
     $subarray[]= $row['email'];
     $subarray[]= $row['phone_number'];
     $subarray[]= $row['gender'];
-    $subarray[]= $row['password'];
+   // $subarray[]= $row['password'];
     $subarray[]= $row['user_role'];
+    
+    $subarray[]= $row['verified'];
     $s = $row['user_status'] == 'Active' ? 'success' : 'danger';
     $btnColor = $row['user_status'] == 'Active' ? 'danger' : 'success';
     $d = $row['user_status'] == 'Active' ? 'Disable' : 'Enable';

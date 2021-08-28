@@ -44,7 +44,7 @@
                 </ul></p>
             </div>
         </div>
-        <p style="text-align: end;top: 0;"><a href="Registration.html">Log Out</a></p>
+        <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
 </nav>
 <div class="hero">
 

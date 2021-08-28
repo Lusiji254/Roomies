@@ -15,7 +15,7 @@
   
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script type="text/javascript" src="googlemap.js"></script>
+ 
     <link rel="stylesheet" href="homepage.css">
     <style> #map {
   height: 400px;
@@ -59,11 +59,14 @@ $sql="SELECT * FROM hostels WHERE hostel_ID='$id'";
 $result=mysqli_query($conn,$sql);
 $filtered_rows= mysqli_num_rows($result)>0;
 
+$location="Nairobi";
 while($row = mysqli_fetch_assoc($result)){
   $id=$row['hostel_ID'];
     $name=$row['hostel_name'];
     $_SESSION['hostelId']=$id;
     $_SESSION['hostelName']=$name;
+
+    $location=$row['location'];
                 
     echo $row['hostel_name'];
     echo $row['gender'];
@@ -113,9 +116,13 @@ while($row = mysqli_fetch_assoc($answer)){?>
 
 </div>
 </div>
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClLSNOdhgaGkctOq69ph461ZXRGUs3W-E&callback=initMap">
-</script>
+<script type="text/javascript" src="googlemap.js"></script>
+<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd1JxsBzPGjhusEs2PK4kP-ZxGllebT6A"></script>
+<script>initMap('<?php echo $location; ?>')</script>
+
+ 
+
+
 
 <a href="booking.php"><button type="submit" class="btn btn-primary"> Book</button></a>
 </body>

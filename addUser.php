@@ -7,7 +7,7 @@ $last_name=$_POST['lastname'];
 $email=$_POST['email'];
 $phone=$_POST['phonenumber'];
 $gender=$_POST['gender'];
-$password=$_POST['password'];
+$password=md5($_POST['password']);
 $user_role=$_POST['role'];
 
 $sql = "INSERT INTO `user` (`first_name`, `last_name`, `email`, `phone_number`, `gender`, `password`, `user_role`) VALUES ('$first_name', '$last_name', '$email', '$phone', '$gender', '$password', '$user_role')";
