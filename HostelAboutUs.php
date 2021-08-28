@@ -36,8 +36,8 @@
         <h1 class="display-5"style="font-size:34pt;">About Us</h1>
         <p  style="font-size:18pt;">At Roomies, We provide a platform that connects students and hostels. 
             We make things easier for both parties, where hostel owners or managers get to 
-            advertise their hostels with us and therefore get clients faster. On the other hand we provide 
-        we partner we the best hostels in different places of the country to provide accomodation to students.
+            advertise their hostels with us and therefore get clients faster. On the other hand we provide and 
+        we partner with the best hostels in different places of the country to provide accomodation to students. <br>
         Roomies is a community that provides ultimate campus life to students. <br>We value your satisfaction.
     
         </p>

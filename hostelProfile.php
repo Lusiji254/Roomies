@@ -116,5 +116,6 @@ while($row = mysqli_fetch_assoc($answer)){?>
 </script>
 
 <a href="booking.php"><button type="submit" class="btn btn-primary"> Book</button></a>
+
 </body>
 </html>

@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="hostel.css">
     <style>
         .form-box{
-            width: 400px;
-            height: 500px;
+            width: 800px;
+            height: 400px;
             position: relative;
             margin: 2% auto;
             background:white;
@@ -58,18 +58,57 @@
         
 
         <p style="text-align: end;top: 0;"><a href="Registration.html">Log Out</a></p>
-</nav>
+</nav><br><br>
+<?php
 
-<div class="container">
-            <form action="" method="POST">
-            
-            <button class="btn btn-primary" style="float:right;width:70px;" name="submit"> Edit</button>
-            
-        
 
-            </form>
+    $query="SELECT * FROM  `user` WHERE email='$_SESSION[login_user]'";
+    $result=mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    //$row = mysqli_fetch_assoc($result); 
+//echo"<img class='img-circle profile_img' src='images/".$_SESSION[pic]."'>";
+    ?>
+    <div class="row">
+            <div clas="col-md-4 mt-1">
+                <div class="card text-center sidebar" style="background-color:teal;color: black;
+             height: 115%;
+             width: 115%;">
+                    <div class="card-body" >
+                        <img src="Images/User.jpg" class="rounded-circle" width="150"alt="#">
+                        <div class="mt-3" >
+                            <h3><?php echo $row['first_name'];?> <?php echo $row['last_name'];?> </h3>
+                                <a href="homepage.php"style="
+             margin-left: 10px;
+             display: block;
+             color: black;
+             padding-bottom: 10px;
+             font-size: 26px;
+             text-decoration: none;">Home</a>
+                                <a href="UpdateProfile.php"style="
+             margin-left: 10px;
+             display: block;
+             color: black;
+             padding-bottom: 10px;
+             font-size: 26px;
+             text-decoration: none;"> Edit Profile</a>
+                                
+                                <a href="Registration.html"style="
+             margin-left: 10px;
+             display: block;
+             color: black;
+             padding-bottom: 10px;
+             font-size: 26px;
+             text-decoration: none;">Log Out</a>
 
-        
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+        </div>
     <div class="wrapper" >
         <?php
     //if(isset($_POST['submit']))
@@ -81,24 +120,16 @@
         ?>
         
         
-            <?php
+            
 
 
-    $query="SELECT * FROM  `user` WHERE email='$_SESSION[login_user]'";
-    $result=mysqli_query($conn, $query);
-    $row = mysqli_fetch_assoc($result);
-    //$row = mysqli_fetch_assoc($result); 
-//echo"<img class='img-circle profile_img' src='images/".$_SESSION[pic]."'>";
-    ?>
-
-
-
-<p>  </p><h3>Welcome, <?php echo $row['first_name'];?> </h3> <br>
 
 </div>
 
     
     <div class="form-box">
+        <h3>My profile</h3><br>
+        
         
 <?php
 echo "<table class='table'>";
@@ -178,6 +209,15 @@ echo "</table>";
 
 </div>
         </div>
+
+        <div class="container">
+            <form action="" method="POST">
+            
+            <button class="btn btn-primary" style="float:right;width:70px;" name="submit"> Edit</button>
+            </form>
+
+            </div>
+   <br><br><br>
       <footer style="color: white;text-align: center;" class="footer">
         
     <p class="text-muted small mb-4 mb-lg-0">&copy; Roomies 2021. All Rights Reserved.</p>
