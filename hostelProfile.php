@@ -140,24 +140,10 @@ while($row = mysqli_fetch_assoc($answer)){?>
 <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd1JxsBzPGjhusEs2PK4kP-ZxGllebT6A"></script>
 <script>initMap('<?php echo $location; ?>')</script>
 
-<div class="col-lg-6 order-lg-2 my-auto showcase-form" >
-    <div class="form-box">
-        <h3>Hi There!</h3>
-       
-       
-  <p style="font-size:18pt;">Book with us now to secure yourself your prefered roomtype. <br> You don't wanna miss it
 
-  <br> Incase of any concerns please reach out to us via: <br>Email - roomies@gmail.com <br> Call - 0712345678</p> <br>
-  <a href="booking.php"><button type="submit" class="btn btn-primary"> Book</button></a>
- 
-
-
-
-    </div>
-    </div>
     </section>
 
-
+    <a href="booking.php"><button type="submit" class="btn btn-primary"> Book</button></a>
 <footer style="color: white;text-align: center;" class="footer">
         
         <p class="text-muted small mb-4 mb-lg-0">&copy; Roomies 2021. All Rights Reserved.</p>
