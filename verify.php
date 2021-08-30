@@ -17,7 +17,7 @@ $update= "UPDATE user SET verified = 'Verified' WHERE vkey='$vkey' LIMIT 1";
 $updated = mysqli_query($conn, $update);
  if($updated){
      $msg="Successful registration, please log in!";
-     header('location:Registration.html');
+     header('location:Registration.php');
  }else{
      echo 'Error'.mysqli_error($conn);
  }

@@ -1,9 +1,7 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['login_user'])){
-      header('location:Registration.php');
-    }
-?>
+<?php include('config.php')?>
+
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,7 +14,13 @@
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   
     <link rel="stylesheet" href="hostel.css">
-    
+    <style>
+        .hero{
+            background: url("Images/2shareroom.jpg") no-repeat center center;
+        }
+
+        
+    </style>
 </head> 
 
 <body>
@@ -32,9 +36,9 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <H4>Roomies</H4>
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="hostel.html">Hostels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostels</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
                 </ul></p>
@@ -42,45 +46,21 @@
         </div>
         <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
 </nav>
-<div class="hero">        
+<div class="hero">
 
-     
 
-    <div class="form-box">`
-        <h3>Search, Find and Book from Anywhere</h3>
-    </form>
-    <form id="register" class="search" action="#" method="post">
-        <label for="floatingInput">Location</label>
-    <input type="location" class="form-control" id="floatingInput" placeholder="Where do you want to stay?">
-    <label for="floatingInput">Maximum Price</label>
-    <input type="maximumPrice" class="form-control" id="floatingInput" placeholder="Ksh">
-    <label for="floatingInput">Hostel Type</label>
-    <div class="input-group mb-3">
-        <select class="form-select" id="inputGroupSelect02">
-          <option selected ></option>
-          <option value="1">Male</option>
-          <option value="2">Female</option>
-          <option value="3">Mixed</option>
-        </select>
-        </div>
-        
-    <button type="submit" class="btn btn-primary">Search</button>
-          
-    </form>
-    </div>
-    </div>
-    </div>
+      <h1 style="margin-top: 9%;">Get Students Faster! <br> 
+       These are some of the hostels offered by our partners. <br>
+     <p style="font-size:26px;"> Add information about your hostel </p><br>
+      <a href="create.php"><button type="submit" class="btn btn-primary"> Add Now</button></a>
+      <br><br>
+    </h1>
 
-  <section class="showcase">
-    <section class="sp-head">
-        <div class="container">
-          <article class="sp-head__content">
-          <br><br> <h3> BELOW ARE SOME OF THE ROOM TYPES OFFERED BY OUR PARTNERED HOSTELS. </h3>
-        <p>All room types are equally as good. Your preference is what matters.</p>  
-        </article>
-        
-          </div>
-          </section>
+
+</div>
+
+
+  
 
 
 
@@ -96,16 +76,16 @@
                 while($row = mysqli_fetch_array($query_run))
                 {
 
-        ?> 
+        ?>
         <div class="col-md-4 mt-3">
             <div class="card">
-            <img src="uploads/<?php echo $row['pictures'];?>" width="260px" height="200px" alt="Hostel images">
+            <img src="<?php echo $row['pictures'];?>" width="80%" height="200px" style="margin:auto;"alt="Hostel images">
                 <div class="card-body">
-                    <h4 style="text-align:center;"class="card-title">Hostel Name: <?php echo $row['hostel_name'];?></h4>
-                    <p style="font-size:18px;"class="card-text"> Contact: <?php echo $row['hostel_owner'];?><br><?php echo $row['tel_number'];?></p>
-                    <p style="font-size:18px;" class="card-text">Hostel Type: <?php echo $row['gender'];?>  </p>
-                    <p style="font-size:18px;"class="card-text">Room types available: <?php echo $row['room_types'];?></p>
-                    <p style="font-size:18px;"class="card-text">Amenities: <?php echo $row['amenities'];?></p>
+                <h4 style="text-align:center;"class="card-title">Hostel Name: <?php echo $row['hostel_name'];?></h4>
+                    <p style="font-size:18px;"class="card-text"> Gender: <?php echo $row['gender'];?></p>
+                    <p style="font-size:18px;" class="card-text">Location: <?php echo $row['location'];?>  </p>
+                    <p style="font-size:18px;"class="card-text">Email: <?php echo $row['hostel_owner'];?></p>
+                    <p style="font-size:18px;"class="card-text">Tel Number <?php echo $row['tel_number'];?></p>
 
                 </div>
                 </div>
@@ -120,22 +100,21 @@
             }
         ?>
 
-
-        
+       
 
 </section>
 
-
-
 </div>
+
+
     
   <section class="sp-head">
     <div class="container">
       <article class="sp-head__content">
-       <h1>Click here to book a hostels. <br> Simple and Fast :) </h1>
+       <h1>Click here to add a hostel. <br> Simple and Fast :) </h1>
       </article>
       <br>
-      <a href="booking.html"><button type="submit" class="btn btn-primary"> Book Now</button></a>
+      <a href="create.php"><button type="submit" class="btn btn-primary"> Add Now</button></a>
       
       </div>
       </section>

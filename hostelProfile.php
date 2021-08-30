@@ -149,6 +149,8 @@ while($row = mysqli_fetch_assoc($answer)){?>
 
   <br> Incase of any concerns please reach out to us via: <br>Email - roomies@gmail.com <br> Call - 0712345678</p> <br>
   <a href="booking.php"><button type="submit" class="btn btn-primary"> Book</button></a>
+ 
+
 
 
     </div>
