@@ -1,4 +1,3 @@
-
 <?php 
     session_start();
     if(!isset($_SESSION['login_user'])){
@@ -15,15 +14,32 @@
   
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script type="text/javascript" src="googlemap.js"></script>
+ 
     <link rel="stylesheet" href="homepage.css">
     <style> #map {
-  height: 400px;
-  /* The height is 400 pixels */
-  width: 60%;
-  /* The width is the width of the web page */
-  border:1px solid blue;
-}</style>
+      
+      /*The width of the map should be 70%*/
+      /*This is the width of the webpage*/
+          width: 100%;
+          text-align: center;
+          margin-left: 16%;
+          height: 500px;
+           border:1px solid blue; 
+           top: 15px; 
+
+              }
+         .form-box{
+            width: 380px;
+            height: 500px;
+            position: relative;
+            margin: 2% auto;
+            background:rgb(255, 255, 255) ;
+            padding: 10px;
+            overflow: hidden;
+            left: 15%;
+            top: 15px;
+            }
+              </style>
 </head>    
 <body>
     <!-- Navigation -->
@@ -57,11 +73,14 @@ $sql="SELECT * FROM hostels WHERE hostel_ID='$id'";
 $result=mysqli_query($conn,$sql);
 $filtered_rows= mysqli_num_rows($result)>0;
 
+$location="Nairobi";
 while($row = mysqli_fetch_assoc($result)){
   $id=$row['hostel_ID'];
     $name=$row['hostel_name'];
     $_SESSION['hostelId']=$id;
     $_SESSION['hostelName']=$name;
+
+    $location=$row['location'];
                 
     echo $row['hostel_name'];
     echo $row['gender'];
@@ -106,16 +125,42 @@ while($row = mysqli_fetch_assoc($answer)){?>
   </tbody>
 </table>
 </div>
-<div class="container">
+
+
+<section class="showcase">
+<div class="container-fluid p-0">
+
+<div class="row no-gutters">
+
+<div class="col-lg-6 order-lg-1">
 <div id="map">
-
 </div>
 </div>
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClLSNOdhgaGkctOq69ph461ZXRGUs3W-E&callback=initMap">
-</script>
+<script type="text/javascript" src="googlemap.js"></script>
+<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd1JxsBzPGjhusEs2PK4kP-ZxGllebT6A"></script>
+<script>initMap('<?php echo $location; ?>')</script>
 
-<a href="booking.php"><button type="submit" class="btn btn-primary"> Book</button></a>
+<div class="col-lg-6 order-lg-2 my-auto showcase-form" >
+    <div class="form-box">
+        <h3>Hi There!</h3>
+       
+       
+  <p style="font-size:18pt;">Book with us now to secure yourself your prefered roomtype. <br> You don't wanna miss it
+
+  <br> Incase of any concerns please reach out to us via: <br>Email - roomies@gmail.com <br> Call - 0712345678</p> <br>
+  <a href="booking.php"><button type="submit" class="btn btn-primary"> Book</button></a>
+
+
+    </div>
+    </div>
+    </section>
+
+
+<footer style="color: white;text-align: center;" class="footer">
+        
+        <p class="text-muted small mb-4 mb-lg-0">&copy; Roomies 2021. All Rights Reserved.</p>
+     
+    </footer>
 
 </body>
 </html>

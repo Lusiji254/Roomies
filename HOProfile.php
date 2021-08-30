@@ -71,74 +71,9 @@
     ?>
 
 
-
-<div class="row">
-            <div clas="col-md-4 mt-1">
-                <div class="card text-center sidebar" style="background-color:teal;color: black;
-             height: 115%;
-             width: 115%;">
-                    <div class="card-body" >
-                        <img src="Images/User.jpg" class="rounded-circle" width="150"alt="#">
-                        <div class="mt-3" >
-                            <h3><?php echo $row['first_name'];?> <?php echo $row['last_name'];?> </h3>
-                                <a href="display.php"style="
-             margin-left: 10px;
-             display: block;
-             color: black;
-             padding-bottom: 10px;
-             font-size: 26px;
-             text-decoration: none;">Home</a>
-                                <a href="UpdateHostelProfile.php"style="
-             margin-left: 10px;
-             display: block;
-             color: black;
-             padding-bottom: 10px;
-             font-size: 26px;
-             text-decoration: none;"> Edit Profile</a>
-                                <a href="hostelProfile.php"style="
-             margin-left: 10px;
-             display: block;
-             color: black;
-             padding-bottom: 10px;
-             font-size: 26px;
-             text-decoration: none;">My Rooms</a>
-                                <a href="Registration.html"style="
-             margin-left: 10px;
-             display: block;
-             color: black;
-             padding-bottom: 10px;
-             font-size: 26px;
-             text-decoration: none;">Log Out</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-        </div>
-    <div class="wrapper" >
-        <?php
-    //if(isset($_POST['submit']))
-   // {
-       // header('location:updateProfile.php');
-     //  $_SESSION['login_user'] = $myusername;
-      //header('Location: updateProfile.php');
-
-        ?>
-        
-        
-            
-
-
-
-</div>
-
     
     <div class="form-box">
-        <h3>My profile</h3><br>
+        <h3>Welcome, <?php echo $row['first_name'];?></h3><br>
         
 <?php
 echo "<table class='table'>";
