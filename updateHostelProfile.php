@@ -92,13 +92,7 @@
   
 </fieldset>
 
-  <fieldset>
-    <label for="floatingPassword">Password</label>
-<input type="text" class="form-control" id="password"  name="password" value="<?php echo $row['password'];?>" required minlength="6">
-
-</fieldset>
-
-
+  
 
 <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-4 pt-0">User Role</legend>

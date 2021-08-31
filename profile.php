@@ -103,14 +103,19 @@ if($row['user_role']=='Hostel Owner'){
 
         <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
 </nav>
+<<<<<<< HEAD
 
 <?php
+=======
+<?php
+
+>>>>>>> a5e1228fe7b3fc2bbcc5ea0f18326de4e083a5e0
     $query="SELECT * FROM  `user` WHERE email='$_SESSION[login_user]'";
     $result=mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
-    //$row = mysqli_fetch_assoc($result); 
-//echo"<img class='img-circle profile_img' src='images/".$_SESSION[pic]."'>";
+    
     ?>
+<<<<<<< HEAD
     
         
         
@@ -119,10 +124,13 @@ if($row['user_role']=='Hostel Owner'){
 
 
 </div>
+=======
+
+>>>>>>> a5e1228fe7b3fc2bbcc5ea0f18326de4e083a5e0
 
     
     <div class="form-box">
-        <h3>My profile</h3><br>
+        <h3>Welcome, <?php echo $row['first_name'];?> </h3><br>
         
         
 <?php

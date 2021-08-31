@@ -97,11 +97,13 @@
              <li class="nav-item"><a class="nav-link" href="HostelAboutUs.php">About Us</a></li>
            </ul>
            </p>
+           
          </div>
+         <?php
+        echo $_SESSION['login_user'] 
+        ?>
        </div>
-       <?php
-        echo $_SESSION['login_user'] ?>
-       <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
+      <p style="text-align: end;top: 0; font-size:20px;"><a href="logout.php">Log Out</a></p>
      </nav>
 
      <div class="container">
