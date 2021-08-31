@@ -103,19 +103,13 @@ if($row['user_role']=='Hostel Owner'){
 
         <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
 </nav>
-<<<<<<< HEAD
 
 <?php
-=======
-<?php
-
->>>>>>> a5e1228fe7b3fc2bbcc5ea0f18326de4e083a5e0
     $query="SELECT * FROM  `user` WHERE email='$_SESSION[login_user]'";
     $result=mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
     
     ?>
-<<<<<<< HEAD
     
         
         
@@ -124,9 +118,6 @@ if($row['user_role']=='Hostel Owner'){
 
 
 </div>
-=======
-
->>>>>>> a5e1228fe7b3fc2bbcc5ea0f18326de4e083a5e0
 
     
     <div class="form-box">
