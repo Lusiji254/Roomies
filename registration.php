@@ -165,5 +165,11 @@ function login(){
    }
     })
 </script>
+<footer style="color: white;text-align: center;" class="footer">
+        
+        <p class="text-muted small mb-4 mb-lg-0">&copy; Roomies 2021. All Rights Reserved.</p>
+     
+    </footer>
+
 </body>
 </html>

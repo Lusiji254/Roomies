@@ -48,13 +48,14 @@
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="HOProfile.php">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="hostelProfile.php">My Rooms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostel</a></li>
                      <li class="nav-item"><a class="nav-link" href="HostelAboutUs.php">About Us</a></li>
                 </ul>
-                <?php
-            echo $_SESSION['login_user'];
-            ?></p>
+                </p>
          </div>
+         <?php
+            echo $_SESSION['login_user'];
+            ?>
         </div>
         
 
@@ -137,14 +138,6 @@ echo "<tr>";
     echo "</td>";
 echo "</tr>";
 
-echo "<tr>";
-    echo "<td>";
-    echo"<b> Password:</b>";
-    echo "</td>";
-
-    echo "<td>";
-    echo $row['password'];
-    echo "</td>";
 echo "</tr>";
 
 
@@ -163,53 +156,6 @@ echo "</table>";
             </div>
    <br><br><br>
 
-<div class="row">
-<div class="col-md-1"></div>
-<table class=" col-md-10 table table-striped">
-<thead>
-    <tr>
-    <th>Hostel Id</th>
-                    <th>Hostel Name</th>
-                    <th>Gender</th>
-                    <th>Location</th>
-                    <th>Telephone</th>
-                    <th>Amenities</th>
-                    <th>Pictures</th>
-                    <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php 
-    
-
-    $owner=$_SESSION['login_user'];
-
-    $sql="SELECT * FROM hostels WHERE hostel_owner ='$owner' ";
-    $query = mysqli_query($conn,$sql);
-    while($row=mysqli_fetch_assoc($query)){ ?>
-
-      <tr>
-      <td ><?php echo $row["hostel_ID"]?></td>
-        <td><?php echo $row['hostel_name']?></td>
-        <td><?php echo $row['gender']?></td>
-        <td><?php echo $row['location']?></td>
-        <td><?php echo $row['tel_number']?></td>
-        <td><?php echo $row['amenities']?></td>
-        <td><img src='<?php echo $row['pictures']?>'width="150px" height="150px"></td>
-       
-            
-     <td> <a type="button"  class="btn btn-sm btn-primary" href="hostelEdits.php?hostel=<?php echo $row['hostel_ID'];?>">Edit</a>
-     <a type="button"  class="btn btn-sm btn-primary" href="hostelbookings.php?hostel=<?php echo $row['hostel_ID'];?>">Bookings</a></td>
-
-      </tr>
-  <?php  }?>
-  </tbody>
-</table>
-
-<div class="col-md-1"></div>
-
-
-</div>
 
 
       <footer style="color: white;text-align: center;" class="footer">

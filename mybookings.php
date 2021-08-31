@@ -34,13 +34,16 @@
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="viewHostel.php">Hostels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostels</a></li>
                     <li class="nav-item"><a class="nav-link" href="mybookings.php">Bookings</a></li>
                     <li class="nav-item"><a class="nav-link" href="AboutUs.php">About Us</a></li>
+                    
                 </ul></p>
+                
             </div>
             <?php 
-      echo $_SESSION['login_user'] ?>
+                echo $_SESSION['login_user'] 
+                ?>
         </div>
         <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
 </nav>
@@ -101,14 +104,13 @@
       </div>
     
         </div>
+        
         <?php
       }
        } ?>
      
 
 </div>
-
-
 
 </body>
 </html>

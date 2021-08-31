@@ -31,7 +31,7 @@
               <H4>Roomies</H4>
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="hostelProfile.php">My Rooms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="HOProfile.php">Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostels</a></li>
                     <li class="nav-item"><a class="nav-link" href="HostelAboutUs.php">About Us</a></li>
                 </ul></p>
@@ -90,6 +90,10 @@
 </div>
 
 
-
+<footer style="color: white;text-align: center;" class="footer">
+        
+        <p class="text-muted small mb-4 mb-lg-0">&copy; Roomies 2021. All Rights Reserved.</p>
+     
+    </footer>
 </body>
 </html>

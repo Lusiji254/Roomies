@@ -58,16 +58,9 @@ if($row['user_role']=='Hostel Owner'){
                 <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-<<<<<<< HEAD
-                    <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
-           <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
-=======
                     <li class="nav-item"><a class="nav-link" href="viewHostel.php">Hostels</a></li>
                     <li class="nav-item"><a class="nav-link" href="mybookings.php">Bookings</a></li>
                     <li class="nav-item"><a class="nav-link" href="AboutUs.php">About Us</a></li>
->>>>>>> 3287d576ca972ee8058c828b628a5fc01e8683aa
                 </ul>
                 <?php
             echo $_SESSION['login_user'];
@@ -80,9 +73,8 @@ if($row['user_role']=='Hostel Owner'){
                     <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="mybookings.php">Bookings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="hostel.html">Hostels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="viewHostel.php">Hostels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="AboutUs.php">About Us</a></li>
                 </ul>
                 <?php
             echo $_SESSION['login_user'];
@@ -112,7 +104,7 @@ if($row['user_role']=='Hostel Owner'){
 
         <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
 </nav>
-
+<?php
 
     $query="SELECT * FROM  `user` WHERE email='$_SESSION[login_user]'";
     $result=mysqli_query($conn, $query);
