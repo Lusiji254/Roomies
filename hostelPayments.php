@@ -3,8 +3,7 @@
     if(!isset($_SESSION['login_user'])){
       header('location:Registration.php');
     }
-    unset($_SESSION['hostelId']);
-    unset($_SESSION['hostelName']);
+ 
 ?>
 <!doctype html>
 <html lang="en">
@@ -45,39 +44,46 @@
         </div>
         <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
 </nav>
-<h5 style="text-align: center;">My Bookings</h5>
+<h5 style="text-align: center;">Payments</h5>
 <div class="row">
 <div class="col-md-1"></div>
 <table class=" col-md-10 table table-striped">
 <thead>
     <tr>
-      <th scope="col">Hostel Name</th>
+    
+      <th scope="col">booking_ID</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Student Email</th>
       <th scope="col">Roomtype</th>
       <th scope="col">Amount</th>
-      <th scope="col">Move in Date</th>
+      <th scope="col">Date</th>
       <th scope="col">Status</th>
     </tr>
   </thead>
   <tbody>
     <?php 
     include('config.php');
+$hostel=$_GET['hostel'];
+    //$student=$_SESSION['login_user'];
+    $query="SELECT b.booked_by,b.room_type,p.booking_ID,p.amount,p.date,p.status,u.first_name,u.last_name FROM  `booking` b
+    LEFT JOIN payments p ON p.user_email=b.booked_by 
+    LEFT JOIN user u ON u.email=b.booked_by 
+    LEFT JOIN hostels h ON h.hostel_ID=b.hostel
+     WHERE h.hostel_owner='$_SESSION[login_user]' AND h.hostel_ID='$hostel'";
 
-    $student=$_SESSION['login_user'];
 
-    $sql="SELECT * FROM booking WHERE booked_by='$student' ";
-    $query = mysqli_query($conn,$sql);
-    
-    while($row=mysqli_fetch_assoc($query)){ ?>
+    $result=mysqli_query($conn, $query);
+         
+    while($row=mysqli_fetch_assoc($result)){ ?>
 
       <tr>
-        <td><?php echo $row['hostel_name']?></td>
+        <td><?php echo $row['booking_ID']?></td>
+        <td><?php echo $row['first_name'] ." ".$row['last_name']?></td>
+        <td><?php echo $row['booked_by']?></td>
         <td><?php echo $row['room_type']?></td>
         <td><?php echo $row['amount']?></td>
-        <td><?php echo $row['move_in_date']?></td>
-        <?php if( $row['status'] == 'Pending'){
-            $s='primary';
-            
-        }elseif($row['status'] == 'Accepted'){
+        <td><?php echo $row['date']?></td>
+        <?php if($row['status'] == 'paid'){
             $s='success';
         }else{
             $s='danger';
@@ -86,28 +92,33 @@
         <td><?php echo '<span class="badge bg-'. $s .'">'. $row['status'] .'</span>';?></td>
 
       </tr>
-      
+   
   </tbody>
 
 </table>
 
 <div class="col-md-1"></div>
 <?php
-      if( $row['status'] == 'Accepted'){?>
-      <a type="button" role="button" href="payment.php" class="btn btn-primary"> Proceed to payment</a>
-        <?php
-      }else{
+      if( $row['status'] == 'paid'){ 
+
+        $student=$_SESSION['login_user'];
+    $sql="SELECT move_in_date FROM  `booking` 
+        WHERE booked_by='$_SESSION[login_user]'";
+    $result=mysqli_query($conn, $sql);
+    if($row=mysqli_fetch_assoc($result)) {   
         ?>
+     
         <div class=" row">
         <div class="col-md-4"></div>
-<div  class=" col-md-8 alert alert-danger" role="alert">
- You cannot make payment until your booking is accepted
+<div  class=" col-md-8 alert alert-success" role="alert">
+You are expected to move in by <?php echo $row['move_in_date'];?>
       </div>
     
         </div>
         <?php
       }
-       } ?>
+       } 
+      }?>
      
 
 </div>

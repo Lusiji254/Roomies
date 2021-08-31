@@ -18,7 +18,10 @@ if(isset($_POST['update'])){
          
                 $result = mysqli_query($conn, $sql);
                 if($result){
-                   header('location:HOProfile.php');
+                   header('location:totalHostels.php');
+                   unset($_SESSION['hostel_name']);
+                  ;
+                
                 }
 
       }

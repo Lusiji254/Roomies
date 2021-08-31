@@ -8,7 +8,7 @@ include('config.php');
 
     if(isset($query)){
         //echo '<div class="alert alert-success">Booking status has been set to <strong>Accepted</strong></div>';
-    header('location:hostelbookings.php');
+        header('location:hostelbookings.php?hostel='.$_GET["id"].'');
     }else{
         echo 'no';
     }

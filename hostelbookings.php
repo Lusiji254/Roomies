@@ -48,7 +48,9 @@
     <tr>
 
       <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
       <th scope="col">Roomtype</th>
+      <th scope="col">Amount</th>
       <th scope="col">Move in Date</th>
       <th scope="col">Status</th>
       <th scope="col">Actions</th>
@@ -69,19 +71,35 @@
       <tr>
       <td hidden><?php echo $row['hostel']?></td>
         <td><?php echo $row['booked_by']?></td>
+        <td><?php echo $row['phone']?></td>
         <td><?php echo $row['room_type']?></td>
+        <td><?php echo $row['amount']?></td>
         <td><?php echo $row['move_in_date']?></td>
-        <?php $s = $row['status'] == 'Pending' ? 'primary' : 'success';?>
+        <?php
+        if($row['status'] == 'Pending'){
+          $s='primary';
+
+        }elseif($row['status'] == 'Accepted'){
+          $s='success';
+        }else{
+          $s='danger';
+        }?>
         <td><?php echo '<span class="badge bg-'. $s .'">'. $row['status'] .'</span>';?></td>
         <td>
-        <a type="button" name="accept" class="btn btn-sm btn-success" href="bookingStatusAccept.php?hostel=<?php echo $row['booked_by'];?>" >Accept</a>
-        <a type="button" name="deny" class="btn btn-sm btn-danger"  href="bookingStatusDeny.php?hostel=<?php echo $row['booked_by'];?>">Deny</a>
-        <?php /*if($row['status'] == 'Pending'){?>
-        <a type="button" name="accept" class="btn btn-sm btn-success" href="bookingStatus.php?hostel=<?php echo $row['booked_by'];?>" >Accept</a>
-     <a type="button" name="deny" class="btn btn-sm btn-danger"  href="bookingStatus.php?hostel=<?php echo $row['booked_by'];?>">Deny</a>
-     <?php ;}elseif($row['status'] == 'Accepted'){?>
-      <a type="button" name="deny" class="btn btn-sm btn-danger"  href="bookingStatus.php?hostel=<?php echo $row['booked_by'];?>">Deny</a>
-      <?php ;}else{ ?> <a type="button" name="accept" class="btn btn-sm btn-success" href="bookingStatus.php?hostel=<?php echo $row['booked_by'];?>">Accept</a><?php ;}*/
+        <!--<a type="button" name="accept" class="btn btn-sm btn-success" href="bookingStatusAccept.php?id=<?php echo $_GET['hostel'] ?>&&hostel=<?php echo $row['booked_by'];?>" >Accept</a>
+        <a type="button" name="deny" class="btn btn-sm btn-danger"  href="bookingStatusDeny.php?id=<?php echo $_GET['hostel'] ?>&&hostel=<?php echo $row['booked_by'];?>">Deny</a>-->
+        <?php 
+        
+        if($row['status'] == 'Pending'){?>
+        <a type="button" name="accept" class="btn btn-sm btn-success" href="bookingStatusAccept.php?id=<?php echo $_GET['hostel'] ?>&&hostel=<?php echo $row['booked_by'];?>" >Accept</a>
+     <a type="button" name="deny" class="btn btn-sm btn-danger"  href="bookingStatusDeny.php?id=<?php echo $_GET['hostel'] ?>&&hostel=<?php echo $row['booked_by'];?>">Deny</a>
+     <?php 
+     
+     ;}elseif($row['status'] == 'Accepted'){?>
+      <a type="button" name="deny" class="btn btn-sm btn-danger"  href="bookingStatusDeny.php?id=<?php echo $_GET['hostel'] ?>&&hostel=<?php echo $row['booked_by'];?>">Deny</a>
+      <?php 
+      ;}else{ ?> <a type="button" name="accept" class="btn btn-sm btn-success" href="bookingStatusAccept.php?id=<?php echo $_GET['hostel'] ?>&&hostel=<?php echo $row['booked_by'];?>">Accept</a>
+      <?php ;}
        ?>
     </td>
 

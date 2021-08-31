@@ -29,17 +29,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <H4>Roomies</H4>
-                <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-<<<<<<< HEAD
-                <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-=======
-                    
+              <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="HOProfile.php">Profile</a></li>
->>>>>>> 3287d576ca972ee8058c828b628a5fc01e8683aa
+                    <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="HostelAboutUs.php">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="AboutUs.php">About Us</a></li>
                 </ul></p>
             </div>
         </div>

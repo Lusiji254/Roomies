@@ -55,35 +55,26 @@ $result=mysqli_query($conn,$sql);
 $row = mysqli_fetch_assoc($result);
 if($row['user_role']=='Hostel Owner'){
              ?>
-                <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
+              <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-<<<<<<< HEAD
                     <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
-           <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
-=======
-                    <li class="nav-item"><a class="nav-link" href="viewHostel.php">Hostels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="mybookings.php">Bookings</a></li>
                     <li class="nav-item"><a class="nav-link" href="AboutUs.php">About Us</a></li>
->>>>>>> 3287d576ca972ee8058c828b628a5fc01e8683aa
-                </ul>
+                </ul></p>
                 <?php
             echo $_SESSION['login_user'];
             ?></p>
             <?php
             }elseif($row['user_role']=='Student'){?>
 
-<p>
-<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+<p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="viewHostel.php">Hostels</a></li>
                     <li class="nav-item"><a class="nav-link" href="mybookings.php">Bookings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="hostel.html">Hostels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">About Us</a></li>
-                </ul>
+                    <li class="nav-item"><a class="nav-link" href="mypayment.php">Payments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="AboutUs.php">About Us</a></li>
+                </ul></p>
                 <?php
             echo $_SESSION['login_user'];
             ?></p>
@@ -113,63 +104,14 @@ if($row['user_role']=='Hostel Owner'){
         <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
 </nav>
 
-
+<?php
     $query="SELECT * FROM  `user` WHERE email='$_SESSION[login_user]'";
     $result=mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
     //$row = mysqli_fetch_assoc($result); 
 //echo"<img class='img-circle profile_img' src='images/".$_SESSION[pic]."'>";
     ?>
-    <div class="row">
-            <div clas="col-md-4 mt-1">
-                <div class="card text-center sidebar" style="background-color:teal;color: black;
-             height: 115%;
-             width: 115%;">
-                    <div class="card-body" >
-                        <img src="Images/User.jpg" class="rounded-circle" width="150"alt="#">
-                        <div class="mt-3" >
-                            <h3><?php echo $row['first_name'];?> <?php echo $row['last_name'];?> </h3>
-                                <a href="homepage.php"style="
-             margin-left: 10px;
-             display: block;
-             color: black;
-             padding-bottom: 10px;
-             font-size: 26px;
-             text-decoration: none;">Home</a>
-                                <a href="UpdateProfile.php"style="
-             margin-left: 10px;
-             display: block;
-             color: black;
-             padding-bottom: 10px;
-             font-size: 26px;
-             text-decoration: none;"> Edit Profile</a>
-                                
-                                <a href="Registration.html"style="
-             margin-left: 10px;
-             display: block;
-             color: black;
-             padding-bottom: 10px;
-             font-size: 26px;
-             text-decoration: none;">Log Out</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-        </div>
-    <div class="wrapper" >
-        <?php
-    //if(isset($_POST['submit']))
-   // {
-       // header('location:updateProfile.php');
-     //  $_SESSION['login_user'] = $myusername;
-      //header('Location: updateProfile.php');
-
-        ?>
+    
         
         
             

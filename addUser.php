@@ -10,7 +10,8 @@ $gender=$_POST['gender'];
 $password=md5($_POST['password']);
 $user_role=$_POST['role'];
 
-$sql = "INSERT INTO `user` (`first_name`, `last_name`, `email`, `phone_number`, `gender`, `password`, `user_role`) VALUES ('$first_name', '$last_name', '$email', '$phone', '$gender', '$password', '$user_role')";
+$sql = "INSERT INTO `user` (`first_name`, `last_name`, `email`, `phone_number`, `gender`, `password`, `user_role`)
+ VALUES ('$first_name', '$last_name', '$email', '$phone', '$gender', '$password', '$user_role')";
 $query = mysqli_query($conn,$sql);
 if($query==true){
     

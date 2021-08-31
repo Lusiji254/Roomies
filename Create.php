@@ -92,7 +92,7 @@
            <p>
            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
              <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
-             <li class="nav-item"><a class="nav-link" href="HOProfile.php">Profile</a></li>
+             <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
              <li class="nav-item"><a class="nav-link" href="totalhostels.php">Hostels</a></li>
              <li class="nav-item"><a class="nav-link" href="HostelAboutUs.php">About Us</a></li>
            </ul>
