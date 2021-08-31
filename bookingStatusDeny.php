@@ -8,7 +8,7 @@ include('config.php');
       //$result= mysqli_fetch_assoc($query);
   
       if(isset($query)){
-          header('location:hostelbookings.php');
+          header('location:hostelbookings.php?hostel='.$_GET["id"].'');
       }
     
 

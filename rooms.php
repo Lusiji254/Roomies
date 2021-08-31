@@ -1,4 +1,3 @@
-
 <?php 
     session_start();
     if(!isset($_SESSION['login_user'])){
@@ -37,10 +36,9 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <H4>Roomies</H4>
               <p><ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="homepage.php">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="mybookings.php">Bookings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="viewHostel.php">Hostels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="totalHostels.php">Hostels</a></li>
                     <li class="nav-item"><a class="nav-link" href="AboutUs.php">About Us</a></li>
                 </ul></p>
             </div>
@@ -49,34 +47,9 @@
         </div>
         <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
 </nav>
-<?php
-include 'config.php';
-
-$id=$_GET['hostel'];
-
-$sql="SELECT * FROM hostels WHERE hostel_ID='$id'";
-$result=mysqli_query($conn,$sql);
-$filtered_rows= mysqli_num_rows($result)>0;
-
-$location="Nairobi";
-while($row = mysqli_fetch_assoc($result)){
-  $id=$row['hostel_ID'];
-    $name=$row['hostel_name'];
-    $_SESSION['hostelId']=$id;
-    $_SESSION['hostelName']=$name;
-
-    $location=$row['location'];
-                
-    echo $row['hostel_name'];
-    echo $row['gender'];
-    echo $row['location'];
-    echo $row['tel_number'];
-    echo $row['amenities'];
-    echo $row['pictures'];
-
-}?>
 <div class="row">
 <div class="col-md-1"></div>
+<form action="" method="post" style="position:relative;">
 <table class=" col-md-10 table table-striped auto-index">
 <thead>
     <tr>
@@ -91,39 +64,65 @@ while($row = mysqli_fetch_assoc($result)){
   </thead>
   <tbody>
 <?php
-$query="SELECT * FROM roomtypes WHERE hostelID='$id'";
+include('config.php');
+   
+
+$hostel=$_GET['hostel'];
+
+$query="SELECT * FROM roomtypes WHERE hostelID='$hostel'";
 $answer=mysqli_query($conn,$query);
 $filtered_row= mysqli_num_rows($answer)>0;
 
 while($row = mysqli_fetch_assoc($answer)){?>
 <tr>
     <td><?php echo $row['roomtype']?></td>
-    <td><?php echo $row['price']?></td>
-    <td><?php if($row['number']>0){
-        echo '<span class="badge bg-success">Available</span>';
-    }else{
-        echo '<span class="badge bg-danger">Inavailable</span>';  
-    }   
-    }?></td>
+    <td>
+    <input type="text" class="form-control" placeholder="Please Enter the Price of a single room" value="<?php echo $row['price']?>" name="price[]" autocomplete="off">
+    </td>
+    <td>
+    <input type="text" class="form-control" placeholder="How many single rooms do you have?"  value="<?php echo $row['number']?>" name="number[]" autocomplete="off">
+    </td>
+   
 </tr>
+<?php
+}?>
+
+
 
   </tbody>
+
 </table>
 </div>
-<div class="container">
-<div id="map">
 
-</div>
-</div>
-<script type="text/javascript" src="googlemap.js"></script>
-<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd1JxsBzPGjhusEs2PK4kP-ZxGllebT6A"></script>
-<script>initMap('<?php echo $location; ?>')</script>
-
- 
-
-
-
-<a href="booking.php"><button type="submit" class="btn btn-primary"> Book</button></a>
-
+<a type="button"  class="btn btn-sm btn-primary" href=" ">Edit</a>
+</form>
 </body>
-</html>
+<?php
+if(isset($_POST['update'])){
+  
+  //acquire data from the form by assigning them to variables
+  $first_name=$_POST['first_name'];
+  $last_name=$_POST['last_name'];
+  $email=$_POST['email'];
+  $phone_number=$_POST['phone_number'];
+  $gender=$_POST['gender'];
+  $password=$_POST['password'];
+  $user_role=$_POST['user_role'];
+  
+  $sql="UPDATE `user` SET first_name ='$_POST[first_name]', last_name='$_POST[last_name]', 
+  email='$_POST[email]', phone_number='$_POST[phone_number]', gender='$_POST[gender]', 
+  user_role='$_POST[user_role]' WHERE email='".$_SESSION['login_user']." ';";
+$result=mysqli_query($conn,$sql);
+//email='$_SESSION[login_user]'"
+if($result)
+  {
+   ?>
+   <script type="text/javascript">
+   alert("Data Updated Sucessfully");
+   window.location="profile.php";
+   </script>
+   <?php
+ }
+
+}
+?>

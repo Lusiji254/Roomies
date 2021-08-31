@@ -36,8 +36,8 @@ VALUES ('$first_name','$last_name','$email', '$phone','$gender','$password','$us
    //#############SEND EMAIL##########//
    $to = $email;
    $subject = "Email Verification for Roomies";
-   $message ="<a href='http://localhost/Roomies/verify.php?vkey=$vkey'>Verify account</a>";
-   $headers = "From: lusijily@gmail.com \r\n";
+   $message ="Hi there! <br>Thank you for registering with roomies. Please <a href='http://localhost/Roomies/verify.php?vkey=$vkey'>verify your account</a>";
+   $headers = "From:matesroomies@gmail.com \r\n";
    $headers .= "MIME-Version: 1.0"."\r\n";
    $headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
 

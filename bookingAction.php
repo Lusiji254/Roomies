@@ -8,12 +8,17 @@ if(isset($_POST['submit'])){
 $hostel_ID=$_POST['hostelid'];
 $hostelname=$_POST['hostelname'];
 $roomtype=$_POST['roomtype'];
+$amount=$_POST['amount'];
 $date=$_POST['date'];
+$phone=$_POST['phone'];
 $bookedby= $_POST['bookedby'] ;
 
 $stmt="SELECT * FROM `booking` WHERE booked_by='$bookedby'";
 $result=mysqli_query($conn,$stmt);
 if($row=mysqli_fetch_assoc($result)>0){
+    $_SESSION['error']= " You cannot make another booking. You already have 1 existing booking.";
+    header('Location: booking.php'); 
+
     ?>
     <!doctype html>
 <html lang="en">
@@ -41,8 +46,8 @@ if($row=mysqli_fetch_assoc($result)>0){
     <?php
 
 }else{
-$sql = "INSERT INTO `booking` (`hostel`,`hostel_name`, `room_type`, `move_in_date`, `booked_by`, `status`)
-                       VALUES ('$hostel_ID','$hostelname', '$roomtype', '$date', '$bookedby','Pending')";
+$sql = "INSERT INTO `booking` (`hostel`,`hostel_name`, `room_type`,`amount`,`move_in_date`,`phone`, `booked_by`, `status`)
+                       VALUES ('$hostel_ID','$hostelname', '$roomtype','$amount', '$date','$phone','$bookedby','Pending')";
 $query = mysqli_query($conn,$sql);
 
 if($query){

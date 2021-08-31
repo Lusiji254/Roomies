@@ -1,4 +1,10 @@
-<?php include('config.php')?>
+<?php 
+ 
+session_start();
+if(!isset($_SESSION['login_user'])){
+  header('location:Registration.php');
+}
+include('config.php')?>
 
 
 

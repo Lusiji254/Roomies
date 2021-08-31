@@ -42,7 +42,7 @@ echo $_SESSION['login_user'] ?></p>
            <a href="profile.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
            <i class="fa fa-address-book me-2"></i>Profile
         </a>
-        <a href="Passwordreset.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+        <a href="AdminPassReset.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
             <i class="fas fa-key me-2"></i>Password Reset
         </a>
            <a href="adminUser.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
@@ -54,7 +54,7 @@ echo $_SESSION['login_user'] ?></p>
         <a href="adminBookings.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
             <i class="fas fa-bookmark me-2"></i>Bookings
         </a>
-        <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+        <a href="adminPayments.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
             <i class="fas fa-wallet me-2"></i>Payments
         </a>
        </div>
@@ -97,7 +97,7 @@ echo $_SESSION['login_user'] ?></p>
         <div class="card-body">
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-white text-primary text-uppercase mb-1">Total Hostels</div>
+                    <div class="text-xs font-weight-bold text-white text-primary text-uppercase mb-1">Total Registered Hostels</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">
                         <?php
                      
@@ -122,7 +122,7 @@ echo $_SESSION['login_user'] ?></p>
         <div class="card-body">
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-white text-primary text-uppercase mb-1">Total Bookings</div>
+                    <div class="text-xs font-weight-bold text-white text-primary text-uppercase mb-1">Total Bookings Made</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">
                         <?php
                      
@@ -146,15 +146,15 @@ echo $_SESSION['login_user'] ?></p>
         <div class="card-body">
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-white text-primary text-uppercase mb-1">Total Payments</div>
+                    <div class="text-xs font-weight-bold text-white text-primary text-uppercase mb-1">Total Payments Made</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">
                         <?php
                      
                 
-                            $query = "SELECT booking_ID FROM booking ORDER BY booking_ID";  
+                            $query = "SELECT payment_ID FROM payments ORDER BY payment_ID";  
                             $query_run = mysqli_query($conn, $query);
                             $row = mysqli_num_rows($query_run);
-                            echo '<h4> Total Bookings: '.$row.'</h4>';
+                            echo '<h4> Total Payments: '.$row.'</h4>';
                         ?>
                     </div>
                 </div>

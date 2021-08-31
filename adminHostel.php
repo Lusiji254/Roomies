@@ -36,7 +36,7 @@
           <li class="nav-item"><a class="nav-link" href="adminUser.php">Users</a></li>
           <li class="nav-item"><a class="nav-link" href="adminHostel.php">Hostels</a></li>
           <li class="nav-item"><a class="nav-link" href="adminBookings.php">Bookings</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminPayments.php">Payment</a></li>
                 </ul></p>
             </div>
             <?php 
@@ -85,81 +85,7 @@
       </div>
         </div>
       </div>
-   
-    
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.3.1/dt-1.10.25/datatables.min.js"></script>
-    <script type="text/javascript">
-    $('#hosteltable').DataTable({
-      //'serverSide':true,
-      'processing':true,
-      'paging':true,
-      'order':[],
-      'ajax':{
-'url':'fetch_hostel.php',
-'type':'post',
-
-      },
-      'fnCreateRow':function(nRow,aData,iDataIndex){
-
-        $(nRow).attr('id', aData[0]);
-
-      },
-      'columnDefs':[{
-        'target':[0,5],
-        'orderable':false,
-      }]
-    });
-    </script>
-<!--ajax for add hostel-->
-<script type="text/javascript">
-$(document).on('submit','#saveHostelForm',function(event){
-  event.preventDefault();
-  var hostelname =$('#inputHostelName').val();
-  var gender =$('input[name= "gender"]').val();
-  var location =$('#inputLocation').val();
-  var telephone =$('#inputTelephone').val();
-  var amenities =$('#inputAmenities').val();
-  var picture =$('#inputPicture').val().split('.').pop().toLowerCase();
-  var hostelowner =$('#inputHostelOwner').val();
- if(picture !=''){
-   if(jQuery.inArray(picture,['gif','png','jpg','jpeg']) ==-1){
-     alert("Invalid Image File");
-     $('#inputPicture').val('');
-     return false;
-   }
- }
-
-  if(hostelname !=''&& gender !=''&& location!=''&& telephone !=''&& roomtype !=''&& amenities !=''&& hostelowner !=''){
-
-$.ajax({
-  url:'addHostel.php',
-  data:{hostelname:hostelname,gender:gender,location:location,telephone:telephone,roomtype:roomtype,amenities:amenities,hostelowner:hostelowner},
-  type:'post',
-  processData: false,
- contentType: false,
-  success:function(data){
-
-
-if(status =='success'){
-  table = $('#hosteltable').DataTable();
-  table.destroy();
-  table.draw();
-  alert("Hostel added successfully");
-  $('#addHostelModal').modal('hide');
-}
-location.reload();
-  }
-});
-  }
-});
-
-</script>
-
-<!--Add hostel-->
+      <!--Add hostel-->
 <!-- Modal -->
 <div class="modal fade" id="addHostelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -209,7 +135,7 @@ location.reload();
             <div class="col-sm-10">
               <input type="tel" name="telephone" class="form-control" id="inputTelephone" value=""required>
             </div>
-            <fieldset class="row mb-3">
+            <!--<fieldset class="row mb-3">
             <legend class="col-form-label col-sm-4 pt-0">Room Type</legend>
           <div class="col-sm-10">
             <div class="form-check">
@@ -230,7 +156,7 @@ location.reload();
                 Quadruple Room
                 </label>
             </div>
-          </div>
+          </div>-->
           
         </fieldset>
             <div class="mb-3 row">
@@ -259,5 +185,80 @@ location.reload();
   </div>
 </div>
 <!--End Hostel modal-->
+   
+    
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.3.1/dt-1.10.25/datatables.min.js"></script>
+    <script type="text/javascript">
+    $('#hosteltable').DataTable({
+      //'serverSide':true,
+      'processing':true,
+      'paging':true,
+      'order':[],
+      'ajax':{
+'url':'fetch_hostel.php',
+'type':'post',
+
+      },
+      'fnCreateRow':function(nRow,aData,iDataIndex){
+
+        $(nRow).attr('id', aData[0]);
+
+      },
+      'columnDefs':[{
+        'target':[0,5],
+        'orderable':false,
+      }]
+    });
+    </script>
+<!--ajax for add hostel-->
+<script type="text/javascript">
+$(document).on('submit','#saveHostelForm',function(event){
+  event.preventDefault();
+  var hostelname =$('#inputHostelName').val();
+  var gender =$('input[name= "gender"]').val();
+  var location =$('#inputLocation').val();
+  var telephone =$('#inputTelephone').val();
+  var amenities =$('#inputAmenities').val();
+  var picture =$('#inputPicture').val().split('.').pop().toLowerCase();
+  var hostelowner =$('#inputHostelOwner').val();
+ if(picture !=''){
+   if(jQuery.inArray(picture,['gif','png','jpg','jpeg']) ==-1){
+     alert("Invalid Image File");
+     $('#inputPicture').val('');
+     return false;
+   }
+ }
+
+  if(hostelname !=''&& gender !=''&& location!=''&& telephone !=''&& amenities !=''&& hostelowner !=''){
+
+$.ajax({
+  url:'addHostel.php',
+  data:{hostelname:hostelname,gender:gender,location:location,telephone:telephone,amenities:amenities,hostelowner:hostelowner},
+  type:'post',
+  processData: false,
+ contentType: false,
+  success:function(data){
+
+
+if(status =='success'){
+  table = $('#hosteltable').DataTable();
+  table.destroy();
+  table.draw();
+  alert("Hostel added successfully");
+  $('#addHostelModal').modal('hide');
+}
+location.reload();
+  }
+});
+  }
+});
+
+</script>
+
+
     </body>
     </html>

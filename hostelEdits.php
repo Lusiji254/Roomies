@@ -95,7 +95,7 @@
            <i class="fas fa-bars ms-1"></i>
          </button>
          <div class="collapse navbar-collapse" id="navbarResponsive">
-           <H4>Add a Hostel at Roomies</H4>
+           
            <p>
            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
            <li class="nav-item"><a class="nav-link" href="display.php">Home</a></li>
@@ -105,19 +105,22 @@
            </ul>
            </p>
          </div>
-       </div>
-       <?php
-        echo $_SESSION['login_user'] ?>
+         <?php
+        echo $_SESSION['login_user'] ;?><br>
+   
        <p style="text-align: end;top: 0;"><a href="logout.php">Log Out</a></p>
+       </div>
+     
      </nav>
 
      <div class="container">
 
        <form method="post" action="updateHostel.php" enctype="multipart/form-data">
+       <H4 style="text-align: center;">Edit Hostel Profile</H4>
                    <input type="text" class="form-control" id="floatingInput"    value="<?php echo $row['hostel_ID'];?>" name="hostel_ID" hidden>
                    <div class="form-group">
                    <label>Hostel name</label>
-           <input type="text" class="form-control" id="floatingInput"    value="<?php echo $row['hostel_name'];?>" name="hostel_name" required>
+           <input type="text" class="form-control" id="floatingInput"    value="<?php echo $row['hostel_name'];?>" name="hostel_name" readonly>
          </div>
          <!--<div class="form-group">
            <label >Hostel Owner</label>
@@ -129,7 +132,7 @@
          </div>
          <div class="form-group">
            <label>Location</label>
-           <input type="text" class="form-control"    value="  <?php echo $row['location'];?>" name="location" required>
+           <input type="text" class="form-control"    value="  <?php echo $row['location'];?>" name="location" readonly>
          </div>
          <label for="floatingInput">Hostel Type</label>
          <div class="input-group mb-3">
@@ -143,7 +146,7 @@
 
          </div>
 
-         <table class="table">
+         <!--<table class="table">
            <thead>
              <tr>
                <th></th>
@@ -238,7 +241,7 @@
 
              </tr>
            </tbody>
-         </table>
+         </table>-->
 
 
 

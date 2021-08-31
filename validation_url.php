@@ -25,7 +25,7 @@
     $log = fopen($logFile, "a");
     fwrite($log, $mpesaResponse);
     fclose($log);
-
+  
     echo $response;
 
 ?>

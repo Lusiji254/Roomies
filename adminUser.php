@@ -17,6 +17,11 @@ if (!isset($_SESSION['login_user'])) {
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.3.1/dt-1.10.25/datatables.min.css" />
 
   <title>Admin User</title>
+  <style>
+.modal{
+  z-index: 1056 !important;
+}
+</style>
 </head>
 
 <body>
@@ -36,7 +41,7 @@ if (!isset($_SESSION['login_user'])) {
           <li class="nav-item"><a class="nav-link" href="adminUser.php">Users</a></li>
           <li class="nav-item"><a class="nav-link" href="adminHostel.php">Hostels</a></li>
           <li class="nav-item"><a class="nav-link" href="adminBookings.php">Bookings</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
+          <li class="nav-item"><a class="nav-link" href="adminPayments.php">Payment</a></li>
         </ul>
         </p>
       </div>
@@ -76,7 +81,7 @@ if (!isset($_SESSION['login_user'])) {
                   <th>Email</th>
                   <th>Phone Number</th>
                   <th>Gender</th>
-                 
+
                   <th>User Role</th>
                   <th>User Status</th>
                   <th>Verification</th>
@@ -94,8 +99,6 @@ if (!isset($_SESSION['login_user'])) {
     </div>
   </div>
 
-
-
   <!--Add user-->
   <!-- Modal -->
   <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -112,21 +115,25 @@ if (!isset($_SESSION['login_user'])) {
               <div class="col-sm-10">
                 <input type="text" name="firstName" class="form-control" id="inputFirstName" value="" required>
               </div>
+            </div>
               <div class="mb-3 row">
                 <label for="inputLastname" class="col-sm-4 col-form-label">Last Name</label>
                 <div class="col-sm-10">
                   <input type="text" name="lastName" class="form-control" id="inputLastName" value="" required>
                 </div>
+              </div>
                 <div class="mb-3 row">
                   <label for="inputEmail" class="col-sm-4 col-form-label">Email</label>
                   <div class="col-sm-10">
                     <input type="email" name="email" class="form-control" id="inputEmail" value="" required>
                   </div>
+                </div>
                   <div class="mb-3 row">
                     <label for="inputPhoneNumber" class="col-sm-4 col-form-label">Phone Number</label>
                     <div class="col-sm-10">
                       <input type="tel" name="phoneNumber" class="form-control" id="inputPhoneNumber" value="" required>
                     </div>
+                  </div>
                     <fieldset class="row mb-3">
                       <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
                       <div class="col-sm-10">
@@ -178,7 +185,9 @@ if (!isset($_SESSION['login_user'])) {
       </div>
     </div>
   </div>
+</div>
   <!--End User modal-->
+
   <!--Edit User-->
   <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -196,21 +205,25 @@ if (!isset($_SESSION['login_user'])) {
               <div class="col-sm-10">
                 <input type="text" name="_firstName" class="form-control" id="_inputFirstName" value="" required>
               </div>
+            </div>
               <div class="mb-3 row">
                 <label for="inputLastname" class="col-sm-4 col-form-label">Last Name</label>
                 <div class="col-sm-10">
                   <input type="text" name="_lastName" class="form-control" id="_inputLastName" value="" required>
                 </div>
+              </div>
                 <div class="mb-3 row">
                   <label for="_inputEmail" class="col-sm-4 col-form-label">Email</label>
                   <div class="col-sm-10">
                     <input type="email" name="_email" class="form-control" id="_inputEmail" value="" required>
                   </div>
+                </div>
                   <div class="mb-3 row">
                     <label for="inputPhoneNumber" class="col-sm-4 col-form-label">Phone Number</label>
                     <div class="col-sm-10">
                       <input type="tel" name="_phoneNumber" class="form-control" id="_inputPhoneNumber" value="" required>
                     </div>
+                  </div>
                     <fieldset class="row mb-3">
                       <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
                       <div class="col-sm-10">
@@ -262,6 +275,7 @@ if (!isset($_SESSION['login_user'])) {
       </div>
     </div>
   </div>
+</div>
 
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -332,11 +346,15 @@ if (!isset($_SESSION['login_user'])) {
       $(document).on('click', '.editBtn', function(event) {
         var id = $(this).attr('id');
 
-        $('#editUserModal').show();
+        //  $('#editUserModal').show();
         $.ajax({
          url: 'get_single_user.php',
          type:'post',
-          data:{}
+          data:{id:id},
+          success:function(data){
+            //$('#students').html(data);
+            $('#editUserModal').modal('show');
+          }
         })
 
       });
